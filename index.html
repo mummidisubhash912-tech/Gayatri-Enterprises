@@ -1,489 +1,372 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gayatri Enterprises - Dodla Ice Creams</title>
 
 <style>
-:root{
- --primary:#7b1230;
- --secondary:#e39a37;
- --bg:#f6f7fb;
- --card:#fff;
- --text:#222;
- --muted:#777;
- --danger:#c62828;
- --success:#16834b;
-}
-
 *{box-sizing:border-box}
 
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:var(--bg);
- color:var(--text);
+margin:0;
+font-family:Arial,sans-serif;
+background:#f6f7fb;
+color:#222
 }
 
-button,input,select,textarea{font:inherit}
-
-button{cursor:pointer}
+header{
+background:#fff;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 2px 10px #0001
+}
 
 .top{
- background:var(--primary);
- color:white;
- padding:13px;
- text-align:center;
+background:#7b1230;
+color:#fff;
+padding:14px;
+text-align:center
 }
 
 .top b{font-size:20px}
 
-header{
- background:#fff;
- position:sticky;
- top:0;
- z-index:20;
- box-shadow:0 2px 10px #0001;
-}
-
 nav{
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding:10px 15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 15px
 }
 
 .logo{
- font-weight:800;
- color:var(--primary);
- font-size:18px;
+font-weight:800;
+color:#7b1230;
+font-size:18px
 }
 
-.navbtn{
- border:0;
- background:white;
- font-size:21px;
- margin-left:7px;
-}
-
-.badge{
- background:#e53935;
- color:white;
- border-radius:20px;
- padding:2px 7px;
- font-size:11px;
+nav button{
+border:0;
+background:#fff;
+font-size:22px;
+margin-left:8px
 }
 
 .search{
- padding:0 15px 12px;
+padding:0 15px 12px
 }
 
 .search input{
- width:100%;
- padding:13px;
- border:1px solid #ddd;
- border-radius:10px;
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px
 }
 
 .hero{
- color:white;
- padding:35px 20px;
- text-align:center;
- background:linear-gradient(135deg,var(--primary),var(--secondary));
+background:linear-gradient(135deg,#7b1230,#e39a37);
+color:white;
+padding:35px 20px;
+text-align:center
 }
 
 .hero h1{
- margin:0 0 8px;
- font-size:28px;
+margin:0 0 10px;
+font-size:28px
 }
 
-section{padding:18px 15px}
+.hero p{margin:5px}
 
-h2{margin:0 0 12px}
+section{padding:20px 15px}
+
+h2{margin-top:0}
 
 .cats{
- display:flex;
- gap:10px;
- overflow:auto;
+display:flex;
+gap:10px;
+overflow:auto
 }
 
 .cats button{
- white-space:nowrap;
- border:1px solid var(--primary);
- background:white;
- color:var(--primary);
- border-radius:20px;
- padding:9px 15px;
+white-space:nowrap;
+border:1px solid #7b1230;
+background:#fff;
+color:#7b1230;
+border-radius:20px;
+padding:9px 15px
 }
 
 .cats button.active{
- background:var(--primary);
- color:white;
+background:#7b1230;
+color:#fff
 }
 
 .products{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
 }
 
 .card{
- background:white;
- border-radius:14px;
- padding:10px;
- box-shadow:0 2px 10px #0001;
+background:#fff;
+border-radius:14px;
+padding:10px;
+box-shadow:0 2px 10px #0001
 }
 
 .card img{
- width:100%;
- height:145px;
- object-fit:contain;
- border-radius:10px;
- background:#fafafa;
+width:100%;
+height:145px;
+object-fit:contain;
+border-radius:10px;
+background:#fafafa
 }
 
 .card h3{
- font-size:15px;
- margin:8px 0 4px;
+font-size:15px;
+margin:8px 0 4px
 }
 
 .price{
- font-weight:bold;
- color:var(--primary);
- font-size:17px;
+font-weight:bold;
+color:#7b1230;
+font-size:17px
 }
 
 .mrp{
- text-decoration:line-through;
- color:#888;
- font-size:12px;
- margin-right:5px;
+font-size:12px;
+color:#888;
+text-decoration:line-through;
+margin-right:5px
 }
 
-.small{
- font-size:12px;
- color:var(--muted);
+.deal{
+font-weight:bold;
+color:#7b1230
+}
+
+.stock{
+font-size:12px;
+color:#555;
+margin-top:4px
+}
+
+.out{
+color:#c62828;
+font-weight:bold
 }
 
 .card button,
 .primary{
- width:100%;
- border:0;
- background:var(--primary);
- color:white;
- padding:10px;
- border-radius:8px;
- margin-top:8px;
+width:100%;
+border:0;
+background:#7b1230;
+color:white;
+padding:10px;
+border-radius:8px;
+margin-top:8px
 }
 
-.secondary{
- background:#eee!important;
- color:#222!important;
+.card button:disabled{
+background:#aaa;
+cursor:not-allowed
 }
 
-.danger{
- background:var(--danger)!important;
- color:white!important;
-}
-
-.success{
- background:var(--success)!important;
- color:white!important;
+.small{
+font-size:12px;
+color:#777
 }
 
 footer{
- background:#222;
- color:white;
- text-align:center;
- padding:25px;
- margin-top:20px;
+background:#222;
+color:#fff;
+text-align:center;
+padding:25px
 }
 
 .modal{
- display:none;
- position:fixed;
- inset:0;
- background:#0008;
- z-index:50;
- padding:15px;
- overflow:auto;
+display:none;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:50;
+padding:20px
 }
 
 .box{
- background:white;
- border-radius:15px;
- padding:20px;
- max-width:600px;
- margin:25px auto;
- max-height:92vh;
- overflow:auto;
-}
-
-.close{
- float:right;
- background:none;
- border:0;
- font-size:26px;
+background:white;
+border-radius:15px;
+padding:20px;
+max-width:550px;
+margin:30px auto;
+max-height:90vh;
+overflow:auto
 }
 
 .box input,
 .box select,
 .box textarea{
- width:100%;
- padding:12px;
- margin:6px 0;
- border:1px solid #ddd;
- border-radius:8px;
+width:100%;
+padding:12px;
+margin:7px 0;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:14px
+}
+
+.box textarea{
+min-height:80px;
+resize:vertical
+}
+
+.close{
+float:right;
+background:none;
+border:0;
+font-size:25px
 }
 
 .row{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:8px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px
 }
 
 .adminitem{
- border-bottom:1px solid #ddd;
- padding:12px 0;
+border-bottom:1px solid #ddd;
+padding:12px 0
+}
+
+.adminitem button{
+border:0;
+padding:7px;
+border-radius:6px;
+margin:2px
+}
+
+.danger{
+background:#c62828;
+color:#fff
+}
+
+.edit{
+background:#eee
+}
+
+.green{
+background:#2e7d32;
+color:#fff
+}
+
+.orange{
+background:#ef6c00;
+color:#fff
 }
 
 .cartrow{
- display:flex;
- justify-content:space-between;
- border-bottom:1px solid #ddd;
- padding:10px 0;
+display:flex;
+justify-content:space-between;
+border-bottom:1px solid #ddd;
+padding:10px 0;
+gap:10px
 }
 
-.qty button{
- border:0;
- background:#eee;
- padding:5px 9px;
- border-radius:6px;
+.qtybtn{
+border:1px solid #ddd;
+background:#fff;
+border-radius:5px;
+padding:3px 8px
 }
 
-.loginScreen{
- position:fixed;
- inset:0;
- background:linear-gradient(135deg,var(--primary),var(--secondary));
- z-index:100;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
+.badge{
+background:#e53935;
+color:#fff;
+border-radius:20px;
+padding:2px 7px;
+font-size:11px
 }
-
-.loginBox{
- background:white;
- width:100%;
- max-width:430px;
- border-radius:22px;
- padding:25px;
- box-shadow:0 10px 40px #0004;
-}
-
-.loginLogo{
- text-align:center;
- color:var(--primary);
- font-size:24px;
- font-weight:800;
-}
-
-.loginSub{
- text-align:center;
- color:#777;
- margin:7px 0 20px;
-}
-
-.loginOption{
- padding:15px;
- border:1px solid #ddd;
- border-radius:12px;
- margin:10px 0;
- background:white;
- width:100%;
- text-align:left;
-}
-
-.loginOption b{
- display:block;
- color:var(--primary);
- margin-bottom:5px;
-}
-
-.hidden{display:none!important}
 
 .notice{
- padding:10px;
- border-radius:9px;
- background:#fff3cd;
- margin:8px 0;
+background:#fff3cd;
+border:1px solid #ffe08a;
+padding:10px;
+border-radius:8px;
+font-size:13px;
+margin:10px 0
 }
 
-.statgrid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:8px;
+.success{
+background:#e8f5e9;
+border:1px solid #a5d6a7;
+padding:10px;
+border-radius:8px;
+font-size:13px;
+margin:10px 0
 }
 
-.stat{
- background:#f8f8f8;
- padding:14px;
- border-radius:12px;
+.preview{
+width:100%;
+max-height:180px;
+object-fit:contain;
+border-radius:10px;
+background:#fafafa;
+margin-top:8px
 }
 
-.stat b{
- font-size:22px;
- color:var(--primary);
+.orderbox{
+background:#fafafa;
+border:1px solid #ddd;
+border-radius:10px;
+padding:12px;
+margin:10px 0
 }
 
-.adminnav{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:8px;
- margin:10px 0;
+.orderstatus{
+padding:5px 8px;
+border-radius:15px;
+font-size:11px;
+background:#eee
 }
 
-.adminnav button{
- border:1px solid #ddd;
- background:white;
- padding:10px;
- border-radius:9px;
-}
-
-.thumb{
- width:70px;
- height:70px;
- object-fit:contain;
- border-radius:8px;
- background:#f7f7f7;
-}
-
-.maplink{
- display:inline-block;
- margin-top:8px;
- color:#1267c4;
-}
-
-.empty{
- text-align:center;
- padding:30px;
- color:#777;
-}
-
-.status{
- display:inline-block;
- padding:5px 9px;
- border-radius:15px;
- background:#eee;
- font-size:12px;
-}
-
-.banner{
- margin:15px;
- border-radius:15px;
- overflow:hidden;
- background:#fff3e6;
-}
-
-.banner img{
- width:100%;
- display:block;
- max-height:250px;
- object-fit:cover;
-}
-
-.categoryBlock{
- margin-bottom:25px;
-}
-
-.categoryHead{
- display:flex;
- justify-content:space-between;
- align-items:center;
+hr{
+border:0;
+border-top:1px solid #ddd;
+margin:18px 0
 }
 
 @media(min-width:700px){
- .products{
-  grid-template-columns:repeat(4,1fr);
- }
- .statgrid{
-  grid-template-columns:repeat(4,1fr);
- }
- .adminnav{
-  grid-template-columns:repeat(4,1fr);
- }
+.products{
+grid-template-columns:repeat(4,1fr)
+}
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-
-<div id="loginScreen" class="loginScreen">
-
-<div class="loginBox">
-
-<div class="loginLogo">
-🍦 GAYATRI ENTERPRISES
-</div>
-
-<div class="loginSub">
-Dodla Ice Creams • Kakinada
-</div>
-
-<button class="loginOption" onclick="customerLoginStart()">
-<b>👤 Customer Login</b>
-<span class="small">
-Order products and manage your account
-</span>
-</button>
-
-<button class="loginOption" onclick="adminLoginStart()">
-<b>⚙️ Admin Login</b>
-<span class="small">
-Manage products, stock and orders
-</span>
-</button>
-
-</div>
-</div>
-
-<!-- HEADER -->
-
 <header>
 
 <div class="top">
-<b>Gayatri Enterprises</b>
-<br>
+<b>Gayatri Enterprises</b><br>
 Dodla Ice Creams • Kakinada
 </div>
 
 <nav>
-
-<div class="logo">
-🍦 DODLA
-</div>
+<div class="logo">🍦 DODLA</div>
 
 <div>
-
-<button class="navbtn" onclick="openCart()">
-🛒
-<span id="cartCount" class="badge">0</span>
+<button onclick="openCart()">
+🛒 <span id="cartCount" class="badge">0</span>
 </button>
 
-<button class="navbtn" onclick="openAccount()">
-👤
-</button>
+<button onclick="openAccount()">👤</button>
 
-<button class="navbtn" onclick="openAdmin()">
-⚙️
+<button onclick="openAdmin()">
+⚙️ <span id="orderBadge" class="badge" style="display:none">0</span>
 </button>
-
 </div>
-
 </nav>
 
 <div class="search">
@@ -495,101 +378,62 @@ oninput="renderProducts()">
 
 </header>
 
-<div id="bannerArea"></div>
 
 <div class="hero">
-
 <h1>Dodla Ice Creams</h1>
-
 <p>Delicious • Quality • Family Packs</p>
-
 <p>Kakinada</p>
-
 </div>
+
 
 <section>
 
 <h2>Categories</h2>
 
-<div
-class="cats"
-id="categories">
-</div>
+<div class="cats" id="categories"></div>
 
 </section>
+
 
 <section>
 
 <div class="row">
-
 <h2>Products</h2>
-
-<span
-id="productCount"
-class="small">
-</span>
-
+<span id="productCount" class="small"></span>
 </div>
 
-<div id="products"></div>
+<div id="products" class="products"></div>
 
 </section>
 
+
 <footer>
 
-<b>
-Gayatri Enterprises – Dodla Ice Creams
-</b>
+<b>Gayatri Enterprises – Dodla Ice Creams</b>
 
-<p>
-Kakinada, Andhra Pradesh
-</p>
+<p>Kakinada, Andhra Pradesh</p>
 
-<p>
-Contact: 9912527666
-</p>
+<p>Contact: 9912527666</p>
 
 </footer>
 
-<!-- CUSTOMER ACCOUNT -->
+
+<!-- ACCOUNT -->
 
 <div class="modal" id="accountModal">
 
 <div class="box">
 
-<button
-class="close"
-onclick="closeModal('accountModal')">
-×
-</button>
+<button class="close"
+onclick="closeModal('accountModal')">×</button>
 
-<h2>My Account</h2>
+<h2>Customer Account</h2>
 
 <div id="accountArea"></div>
 
 </div>
-
 </div>
 
-<!-- CUSTOMER PROFILE -->
-
-<div class="modal" id="customerModal">
-
-<div class="box">
-
-<button
-class="close"
-onclick="closeModal('customerModal')">
-×
-</button>
-
-<h2>Customer Details</h2>
-
-<div id="customerArea"></div>
-
-</div>
-
-</div>
 
 <!-- CART -->
 
@@ -597,39 +441,16 @@ onclick="closeModal('customerModal')">
 
 <div class="box">
 
-<button
-class="close"
-onclick="closeModal('cartModal')">
-×
-</button>
+<button class="close"
+onclick="closeModal('cartModal')">×</button>
 
 <h2>Your Cart</h2>
 
 <div id="cartArea"></div>
 
 </div>
-
 </div>
 
-<!-- ORDERS -->
-
-<div class="modal" id="ordersModal">
-
-<div class="box">
-
-<button
-class="close"
-onclick="closeModal('ordersModal')">
-×
-</button>
-
-<h2>My Orders</h2>
-
-<div id="myOrdersArea"></div>
-
-</div>
-
-</div>
 
 <!-- ADMIN -->
 
@@ -637,29 +458,20 @@ onclick="closeModal('ordersModal')">
 
 <div class="box">
 
-<button
-class="close"
-onclick="closeModal('adminModal')">
-×
-</button>
+<button class="close"
+onclick="closeModal('adminModal')">×</button>
 
 <div id="adminArea"></div>
 
 </div>
-
 </div>
+
 
 <script>
 
-const placeholder =
-"data:image/svg+xml;charset=UTF-8,"+
-encodeURIComponent(
-'<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">'+
-'<rect width="100%" height="100%" fill="#f7f7f7"/>'+
-'<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="30" fill="#777">'+
-'Dodla Ice Cream'+
-'</text></svg>'
-);
+/* =========================
+DEFAULT PRODUCTS
+========================= */
 
 const defaultProducts=[
 
@@ -668,9 +480,9 @@ id:1,
 name:"Vanilla",
 cat:"Cups",
 mrp:40,
-deal:35,
+price:35,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Vanilla"
 },
 
 {
@@ -678,9 +490,9 @@ id:2,
 name:"Chocolate",
 cat:"Cups",
 mrp:45,
-deal:40,
+price:40,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Chocolate"
 },
 
 {
@@ -688,9 +500,9 @@ id:3,
 name:"Strawberry",
 cat:"Cups",
 mrp:45,
-deal:40,
+price:40,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Strawberry"
 },
 
 {
@@ -698,9 +510,9 @@ id:4,
 name:"Butterscotch",
 cat:"Cups",
 mrp:50,
-deal:45,
+price:45,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Butterscotch"
 },
 
 {
@@ -708,9 +520,9 @@ id:5,
 name:"Chocobar",
 cat:"Bars",
 mrp:35,
-deal:30,
+price:30,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Chocobar"
 },
 
 {
@@ -718,9 +530,9 @@ id:6,
 name:"Grape Bar",
 cat:"Bars",
 mrp:35,
-deal:30,
+price:30,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Grape+Bar"
 },
 
 {
@@ -728,47 +540,35 @@ id:7,
 name:"Mango",
 cat:"Bars",
 mrp:35,
-deal:30,
+price:30,
 stock:20,
-img:placeholder
+img:"https://via.placeholder.com/300?text=Mango"
 },
 
 {
 id:8,
 name:"Family Pack",
 cat:"Family Packs",
-mrp:220,
-deal:180,
-stock:10,
-img:placeholder
+mrp:200,
+price:180,
+stock:20,
+img:"https://via.placeholder.com/300?text=Family+Pack"
 }
 
 ];
+
+
+/* =========================
+LOCAL STORAGE
+========================= */
 
 let products=
 JSON.parse(localStorage.getItem("products")||"null")
 ||defaultProducts;
 
-products=products.map(p=>({
-
-...p,
-
-mrp:Number(p.mrp ?? p.price ?? 0),
-
-deal:Number(p.deal ?? p.price ?? 0),
-
-stock:Number(p.stock ?? 20),
-
-img:p.img||placeholder
-
-}));
-
 let categories=
 JSON.parse(localStorage.getItem("categories")||"null")
 ||["All","Cups","Bars","Family Packs"];
-
-if(!categories.includes("All"))
-categories.unshift("All");
 
 let cart=
 JSON.parse(localStorage.getItem("cart")||"[]");
@@ -779,23 +579,15 @@ JSON.parse(localStorage.getItem("wishlist")||"[]");
 let orders=
 JSON.parse(localStorage.getItem("orders")||"[]");
 
-let customer=
-JSON.parse(localStorage.getItem("customerProfile")||"null");
-
-let selectedCat="All";
-
 let banner=
 localStorage.getItem("bannerImage")||"";
 
-let theme=
-JSON.parse(localStorage.getItem("theme")||"null")
-||
-{
-primary:"#7b1230",
-secondary:"#e39a37"
-};
+let selectedCat="All";
 
-applyTheme();
+
+/* =========================
+SAVE
+========================= */
 
 function save(){
 
@@ -824,82 +616,53 @@ localStorage.setItem(
 JSON.stringify(orders)
 );
 
-if(customer){
-
-localStorage.setItem(
-"customerProfile",
-JSON.stringify(customer)
-);
-
 }
 
-renderCategories();
 
-renderProducts();
-
-updateCart();
-
-renderBanner();
-
-}
-
-function applyTheme(){
-
-document.documentElement.style
-.setProperty(
-"--primary",
-theme.primary
-);
-
-document.documentElement.style
-.setProperty(
-"--secondary",
-theme.secondary
-);
-
-}
+/* =========================
+BANNER
+========================= */
 
 function renderBanner(){
 
-let el=
-document.getElementById("bannerArea");
+let hero=document.querySelector(".hero");
 
-if(!banner){
+if(banner){
 
-el.innerHTML="";
+hero.style.backgroundImage=
+"url('"+banner+"')";
 
-return;
+hero.style.backgroundSize="cover";
+hero.style.backgroundPosition="center";
+
+}
 
 }
 
-el.innerHTML=
 
-'<div class="banner">'+
-
-'<img src="'+banner+'">'+
-
-'</div>';
-
-}
+/* =========================
+CATEGORIES
+========================= */
 
 function renderCategories(){
 
-let el=
-document.getElementById("categories");
+let el=document.getElementById("categories");
 
 el.innerHTML=
+categories.map(c=>`
 
-categories.map(c=>
+<button
+class="${c==selectedCat?'active':''}"
+onclick="selectCat('${escapeText(c)}')">
 
-'<button class="'+
-(c===selectedCat?"active":"")+
-'" onclick="selectCat('+JSON.stringify(c)+')">'+
-escapeHtml(c)+
-'</button>'
+${escapeHTML(c)}
 
-).join("");
+</button>
+
+`).join("");
 
 }
+
 
 function selectCat(c){
 
@@ -911,188 +674,114 @@ renderProducts();
 
 }
 
+
+/* =========================
+PRODUCTS
+========================= */
+
 function renderProducts(){
 
 let q=
-(document.getElementById("search")?.value||"")
+document.getElementById("search")
+.value
 .toLowerCase();
 
-let cats=
-
-selectedCat==="All"
-?
-categories.filter(c=>c!=="All")
-:
-[selectedCat];
-
-let html="";
-
-let count=0;
-
-cats.forEach(cat=>{
-
 let list=
-
 products.filter(p=>
 
-p.cat===cat&&
+(selectedCat=="All"||p.cat==selectedCat)
+
+&&
+
 p.name.toLowerCase().includes(q)
 
 );
 
-if(!list.length)return;
-
-count+=list.length;
-
-html+=
-
-'<div class="categoryBlock">'+
-
-'<div class="categoryHead">'+
-
-'<h2>'+escapeHtml(cat)+'</h2>'+
-
-'<span class="small">'+
-list.length+
-' products</span>'+
-
-'</div>'+
-
-'<div class="products">';
-
-list.forEach(p=>{
-
-html+=productCard(p);
-
-});
-
-html+='</div></div>';
-
-});
-
-if(!html){
-
-html=
-'<div class="empty">No products found.</div>';
-
-}
-
-document.getElementById("products")
-.innerHTML=html;
 
 document.getElementById("productCount")
-.textContent=count+" products";
+.textContent=list.length+" products";
 
-}
 
-function productCard(p){
+document.getElementById("products").innerHTML=
 
-let out=p.stock<=0;
-
-return `
+list.map(p=>`
 
 <div class="card">
 
-<img
-src="${p.img}"
-alt="${escapeHtml(p.name)}">
+<img src="${p.img}"
+alt="${escapeHTML(p.name)}">
 
-<h3>${escapeHtml(p.name)}</h3>
+<h3>${escapeHTML(p.name)}</h3>
 
 <div class="small">
-${escapeHtml(p.cat)}
+${escapeHTML(p.cat)}
 </div>
 
 <div>
-
-<span class="mrp">
-MRP ₹${money(p.mrp)}
-</span>
-
-<span class="price">
-₹${money(p.deal)}
-</span>
-
+<span class="mrp">₹${p.mrp||p.price}</span>
+<span class="deal">₹${p.price}</span>
 </div>
 
-<div class="small">
+<div class="${Number(p.stock)<=0?'stock out':'stock'}">
 
 ${
-out
-?
-"Out of Stock"
-:
-p.stock<=5
-?
-"Low Stock: "+p.stock
-:
-"In Stock: "+p.stock
+Number(p.stock)<=0
+?"Out of Stock"
+:"Stock: "+p.stock
 }
 
 </div>
 
 <button
-${out?"disabled":""}
+${Number(p.stock)<=0?"disabled":""}
 onclick="addCart(${p.id})">
 
-${out?"Out of Stock":"Add to Cart"}
+${
+Number(p.stock)<=0
+?"Out of Stock"
+:"Add to Cart"
+}
 
 </button>
 
 <button
-class="secondary"
+style="background:#eee;color:#222"
 onclick="toggleWish(${p.id})">
 
-${wishlist.includes(p.id)?"❤️":"♡"}
-Wishlist
+${wishlist.includes(p.id)?"❤️":"♡"} Wishlist
 
 </button>
 
 </div>
 
-`;
+`).join("");
 
 }
 
-function money(n){
 
-return Number(n||0)
-.toLocaleString("en-IN");
-
-}
-
-function escapeHtml(s){
-
-return String(s??"")
-.replace(/[&<>"']/g,m=>({
-
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-
-}[m]));
-
-}
+/* =========================
+CART
+========================= */
 
 function addCart(id){
 
-let p=
-products.find(x=>x.id===id);
+let p=products.find(x=>x.id==id);
 
-if(!p||p.stock<=0)return;
+if(!p||Number(p.stock)<=0){
 
-let item=
-cart.find(x=>x.id===id);
+alert("Product is out of stock.");
+
+return;
+
+}
+
+let item=cart.find(x=>x.id==id);
 
 if(item){
 
-if(item.qty>=p.stock){
+if(item.qty>=Number(p.stock)){
 
-alert(
-"Available stock is "+p.stock
-);
+alert("Stock limit reached.");
 
 return;
 
@@ -1111,28 +800,30 @@ qty:1
 
 save();
 
+updateCart();
+
+renderProducts();
+
 alert("Added to cart");
 
 }
+
 
 function updateCart(){
 
 document.getElementById("cartCount")
 .textContent=
-
-cart.reduce(
-(a,b)=>a+b.qty,
-0
-);
+cart.reduce((a,b)=>a+b.qty,0);
 
 }
+
 
 function toggleWish(id){
 
 if(wishlist.includes(id))
 
 wishlist=
-wishlist.filter(x=>x!==id);
+wishlist.filter(x=>x!=id);
 
 else
 
@@ -1140,18 +831,19 @@ wishlist.push(id);
 
 save();
 
+renderProducts();
+
 }
+
+
+/* =========================
+OPEN CART
+========================= */
 
 function openCart(){
 
 document.getElementById("cartModal")
 .style.display="block";
-
-renderCart();
-
-}
-
-function renderCart(){
 
 let area=
 document.getElementById("cartArea");
@@ -1159,324 +851,345 @@ document.getElementById("cartArea");
 if(!cart.length){
 
 area.innerHTML=
-'<div class="empty">Your cart is empty.</div>';
+"<p>Your cart is empty.</p>";
 
 return;
 
 }
 
+
 let total=0;
 
-let html="";
 
-cart.forEach(x=>{
+area.innerHTML=
+
+cart.map(x=>{
 
 let p=
-products.find(y=>y.id===x.id);
+products.find(y=>y.id==x.id);
 
-if(!p)return;
+if(!p)return"";
 
-let sub=
-p.deal*x.qty;
+let subtotal=
+Number(p.price)*Number(x.qty);
 
-total+=sub;
+total+=subtotal;
 
-html+=`
+return `
 
 <div class="cartrow">
 
 <div>
 
-<b>${escapeHtml(p.name)}</b>
+<b>${escapeHTML(p.name)}</b>
 
 <br>
 
 <span class="small">
-₹${money(p.deal)} × ${x.qty}
+₹${p.price} × ${x.qty}
 </span>
 
-<div class="qty">
+<br>
 
-<button onclick="changeQty(${p.id},-1)">
-−
-</button>
+<button class="qtybtn"
+onclick="changeQty(${p.id},-1)">−</button>
 
 ${x.qty}
 
-<button onclick="changeQty(${p.id},1)">
-+
-</button>
-
-<button onclick="removeCart(${p.id})">
-Remove
-</button>
+<button class="qtybtn"
+onclick="changeQty(${p.id},1)">+</button>
 
 </div>
 
-</div>
-
-<b>
-₹${money(sub)}
-</b>
+<b>₹${subtotal}</b>
 
 </div>
 
 `;
 
-});
+}).join("")
 
-area.innerHTML=
++
 
-html+
+`
 
-"<h3>Total Order Value: ₹"+
-money(total)+
-"</h3>"+
+<h3>Total Order Value: ₹${total}</h3>
 
-'<button class="primary" onclick="checkout()">'+
-"Proceed to Checkout"+
-"</button>";
+<button class="primary"
+onclick="checkout()">
+
+Place Order
+
+</button>
+
+`;
 
 }
 
-function changeQty(id,d){
 
-let item=
-cart.find(x=>x.id===id);
+/* =========================
+CHANGE QTY
+========================= */
 
-let p=
-products.find(x=>x.id===id);
+function changeQty(id,change){
+
+let item=cart.find(x=>x.id==id);
+
+let p=products.find(x=>x.id==id);
 
 if(!item||!p)return;
 
-if(
-d>0 &&
-item.qty>=p.stock
-){
-
-alert(
-"Available stock is "+p.stock
-);
-
-return;
-
-}
-
-item.qty+=d;
+item.qty+=change;
 
 if(item.qty<=0){
 
-cart=
-cart.filter(x=>x.id!==id);
+cart=cart.filter(x=>x.id!=id);
+
+}
+
+if(item.qty>Number(p.stock)){
+
+item.qty=Number(p.stock);
+
+alert("Stock limit reached.");
 
 }
 
 save();
 
-renderCart();
+updateCart();
+
+openCart();
+
+renderProducts();
 
 }
 
-function removeCart(id){
 
-cart=
-cart.filter(x=>x.id!==id);
+/* =========================
+CUSTOMER ACCOUNT
+========================= */
 
-save();
+function openAccount(){
 
-renderCart();
-
-}
-
-function customerLoginStart(){
-
-if(customer){
-
-closeLogin();
-
-openAccount();
-
-}else{
-
-closeLogin();
-
-openCustomerSetup();
-
-}
-
-}
-
-function adminLoginStart(){
-
-closeLogin();
-
-openAdmin();
-
-}
-
-function closeLogin(){
-
-document
-.getElementById("loginScreen")
-.classList.add("hidden");
-
-}
-
-function openCustomerSetup(){
-
-document
-.getElementById("customerModal")
+document.getElementById("accountModal")
 .style.display="block";
 
-document
-.getElementById("customerArea")
-.innerHTML=`
+let profile=
+JSON.parse(
+localStorage.getItem("customerProfile")||"null"
+);
 
-<p class="notice">
+if(profile){
 
-Please enter your details.
-GPS location is required for delivery.
+document.getElementById("accountArea").innerHTML=`
 
+<div class="success">
+Customer profile saved successfully.
+</div>
+
+<p><b>Name:</b> ${escapeHTML(profile.name)}</p>
+
+<p><b>Shop:</b> ${escapeHTML(profile.shop)}</p>
+
+<p><b>Mobile:</b> ${escapeHTML(profile.mobile)}</p>
+
+<p><b>Address:</b> ${escapeHTML(profile.address)}</p>
+
+<p>
+<b>GPS:</b>
+${profile.lat?profile.lat+", "+profile.lng:"Not available"}
 </p>
 
-<input
-id="cName"
-placeholder="Customer Name">
+${
+profile.lat
+?
+`<a
+href="https://www.google.com/maps?q=${profile.lat},${profile.lng}"
+target="_blank">
 
-<input
-id="cShop"
-placeholder="Shop Name">
+<button class="primary">
+📍 View My Location
+</button>
 
-<input
-id="cMobile"
-maxlength="10"
-inputmode="numeric"
-placeholder="Mobile Number">
-
-<textarea
-id="cAddress"
-placeholder="Full Address">
-</textarea>
+</a>`
+:""
+}
 
 <button
 class="primary"
-onclick="getGPSAndSave()">
+onclick="getGPS(true)">
 
-📍 Get GPS Location & Save
+📍 Update GPS Location
 
 </button>
 
-<div id="gpsMsg"
-class="small">
-</div>
+<button
+class="primary"
+onclick="editCustomerProfile()">
+
+✏️ Edit Profile
+
+</button>
+
+<button
+class="primary"
+onclick="logoutCustomer()">
+
+Logout
+
+</button>
 
 `;
 
-if(customer){
+}else{
 
-cName.value=customer.name;
-
-cShop.value=customer.shop;
-
-cMobile.value=customer.mobile;
-
-cAddress.value=customer.address;
+showCustomerForm();
 
 }
 
 }
 
-function getGPSAndSave(){
 
-let name=
-document.getElementById("cName")
-.value.trim();
+/* =========================
+CUSTOMER FORM
+========================= */
 
-let shop=
-document.getElementById("cShop")
-.value.trim();
+function showCustomerForm(){
 
-let mobile=
-document.getElementById("cMobile")
-.value.trim();
+document.getElementById("accountArea").innerHTML=`
 
-let address=
-document.getElementById("cAddress")
-.value.trim();
+<h3>Customer Details</h3>
 
-if(
-!name||
-!shop||
-!/^[6-9]\d{9}$/.test(mobile)||
-!address
-){
+<p class="small">
+Please enter your details once. They will be saved for future orders.
+</p>
 
-alert(
-"Please fill all details correctly."
-);
+<input
+id="customerName"
+placeholder="Customer Name">
 
-return;
+<input
+id="shopName"
+placeholder="Shop Name">
+
+<input
+id="customerMobile"
+type="tel"
+maxlength="10"
+placeholder="10 digit Mobile Number">
+
+<textarea
+id="customerAddress"
+placeholder="Address"></textarea>
+
+<button
+class="primary"
+onclick="getGPS(false)">
+
+📍 Get GPS Location
+
+</button>
+
+<div id="gpsStatus"
+class="small">
+
+GPS location not selected.
+
+</div>
+
+<button
+class="primary"
+onclick="saveCustomerProfile()">
+
+Save Customer Details
+
+</button>
+
+`;
 
 }
+
+
+let currentGPS={
+lat:"",
+lng:""
+};
+
+
+/* =========================
+GPS
+========================= */
+
+function getGPS(update){
 
 if(!navigator.geolocation){
 
-alert(
-"GPS is not supported by this browser."
-);
+alert("GPS is not supported by this browser.");
 
 return;
 
 }
 
-document.getElementById("gpsMsg")
-.textContent=
-"Getting GPS location...";
+let status=
+document.getElementById("gpsStatus");
+
+if(status)
+status.textContent="Getting GPS location...";
+
 
 navigator.geolocation.getCurrentPosition(
 
-pos=>{
+function(position){
 
-customer={
+currentGPS.lat=
+position.coords.latitude;
 
-name:name,
+currentGPS.lng=
+position.coords.longitude;
 
-shop:shop,
+if(status){
 
-mobile:mobile,
+status.textContent=
+"GPS Saved: "+
+currentGPS.lat.toFixed(6)+
+", "+
+currentGPS.lng.toFixed(6);
 
-address:address,
+}
 
-lat:pos.coords.latitude,
+if(update){
 
-lng:pos.coords.longitude,
+let profile=
+JSON.parse(
+localStorage.getItem("customerProfile")||"{}"
+);
 
-updatedAt:new Date().toISOString()
+profile.lat=currentGPS.lat;
+profile.lng=currentGPS.lng;
 
-};
+localStorage.setItem(
+"customerProfile",
+JSON.stringify(profile)
+);
 
-save();
-
-closeModal("customerModal");
-
-closeLogin();
+alert("GPS location updated.");
 
 openAccount();
 
-alert(
-"Customer profile saved successfully."
-);
+}
 
 },
 
-()=>{
+function(error){
 
-document.getElementById("gpsMsg")
-.innerHTML=
-'<span style="color:red">'+
-"Location permission denied. "+
-"Please allow location access."+
-"</span>";
+if(status)
+status.textContent=
+"GPS permission not available.";
+
+alert(
+"Please allow Location permission in your browser."
+);
 
 },
 
@@ -1490,296 +1203,306 @@ maximumAge:0
 
 }
 
-function openAccount(){
 
-document.getElementById("accountModal")
-.style.display="block";
+/* =========================
+SAVE CUSTOMER
+========================= */
 
-if(!customer){
+function saveCustomerProfile(){
 
-document.getElementById("accountArea")
-.innerHTML=
+let name=
+document.getElementById("customerName")
+.value.trim();
 
-"<p>No customer profile.</p>"+
+let shop=
+document.getElementById("shopName")
+.value.trim();
 
-'<button class="primary" onclick="closeModal(\'accountModal\');openCustomerSetup()">'+
-"Create Profile"+
-"</button>";
+let mobile=
+document.getElementById("customerMobile")
+.value.trim();
+
+let address=
+document.getElementById("customerAddress")
+.value.trim();
+
+
+if(!name||!shop||!mobile||!address){
+
+alert("Please fill all details.");
 
 return;
 
 }
 
-document.getElementById("accountArea")
-.innerHTML=
 
-"<p><b>Name:</b> "+
-escapeHtml(customer.name)+
-"</p>"+
+if(!/^[6-9]\d{9}$/.test(mobile)){
 
-"<p><b>Shop:</b> "+
-escapeHtml(customer.shop)+
-"</p>"+
+alert("Enter valid 10 digit mobile number.");
 
-"<p><b>Mobile:</b> "+
-customer.mobile+
-"</p>"+
-
-"<p><b>Address:</b> "+
-escapeHtml(customer.address)+
-"</p>"+
-
-"<p><b>GPS:</b> "+
-(customer.lat?"Saved":"Not Saved")+
-"</p>"+
-
-(customer.lat?
-
-'<a class="maplink" target="_blank" href="https://www.google.com/maps?q='+
-customer.lat+
-','+
-customer.lng+
-'">📍 View on Map</a>'
-
-:"")+
-
-'<button class="primary" onclick="editCustomer()">Edit Profile</button>'+
-
-'<button class="primary secondary" onclick="openMyOrders()">📦 My Orders</button>'+
-
-'<button class="primary danger" onclick="logoutCustomer()">Logout</button>';
+return;
 
 }
 
-function editCustomer(){
 
-closeModal("accountModal");
+let profile={
 
-openCustomerSetup();
+name:name,
+shop:shop,
+mobile:mobile,
+address:address,
+lat:currentGPS.lat,
+lng:currentGPS.lng
 
-}
+};
 
-function logoutCustomer(){
 
-customer=null;
-
-localStorage.removeItem(
-"customerProfile"
+localStorage.setItem(
+"customerProfile",
+JSON.stringify(profile)
 );
 
-closeModal("accountModal");
+alert("Customer profile saved.");
 
-document.getElementById("loginScreen")
-.classList.remove("hidden");
+openAccount();
 
 }
+
+
+/* =========================
+EDIT CUSTOMER
+========================= */
+
+function editCustomerProfile(){
+
+let p=
+JSON.parse(
+localStorage.getItem("customerProfile")||"{}"
+);
+
+document.getElementById("accountArea").innerHTML=`
+
+<h3>Edit Customer Details</h3>
+
+<input
+id="customerName"
+value="${escapeAttr(p.name||"")}"
+placeholder="Customer Name">
+
+<input
+id="shopName"
+value="${escapeAttr(p.shop||"")}"
+placeholder="Shop Name">
+
+<input
+id="customerMobile"
+type="tel"
+maxlength="10"
+value="${escapeAttr(p.mobile||"")}"
+placeholder="Mobile Number">
+
+<textarea
+id="customerAddress"
+placeholder="Address">${escapeHTML(p.address||"")}</textarea>
+
+<div class="small">
+
+GPS:
+${p.lat?p.lat+", "+p.lng:"Not available"}
+
+</div>
+
+<button
+class="primary"
+onclick="getGPS(false)">
+
+📍 Update GPS
+
+</button>
+
+<button
+class="primary"
+onclick="saveCustomerProfile()">
+
+Save Changes
+
+</button>
+
+`;
+
+}
+
+
+/* =========================
+CHECKOUT
+========================= */
 
 function checkout(){
 
-if(!customer){
+let profile=
+JSON.parse(
+localStorage.getItem("customerProfile")||"null"
+);
+
+if(!profile){
+
+alert(
+"Please complete customer profile first."
+);
 
 closeModal("cartModal");
 
-openCustomerSetup();
+openAccount();
 
 return;
 
 }
 
-if(!cart.length)return;
 
-let items=[];
+if(!cart.length){
 
-for(let x of cart){
+alert("Cart is empty.");
+
+return;
+
+}
+
+
+let orderItems=[];
+
+let total=0;
+
+
+for(let item of cart){
 
 let p=
-products.find(y=>y.id===x.id);
+products.find(x=>x.id==item.id);
 
 if(!p)continue;
 
-if(x.qty>p.stock){
+let subtotal=
+Number(p.price)*Number(item.qty);
 
-alert(
-"Insufficient stock for "+
-p.name
-);
+total+=subtotal;
 
-return;
 
-}
-
-items.push({
+orderItems.push({
 
 id:p.id,
-
 name:p.name,
-
-qty:x.qty,
-
-mrp:p.mrp,
-
-deal:p.deal,
-
-subtotal:p.deal*x.qty
+qty:item.qty,
+mrp:Number(p.mrp||p.price),
+dealPrice:Number(p.price),
+subtotal:subtotal
 
 });
 
 }
 
-let total=
-items.reduce(
-(a,x)=>a+x.subtotal,
-0
-);
-
-let id=
-
-"GE-"+
-
-new Date()
-.toISOString()
-.slice(0,10)
-.replace(/-/g,"")+
-
-"-"+
-
-String(
-orders.length+1
-)
-.padStart(4,"0");
 
 let order={
 
-id:id,
+id:"ORD"+Date.now(),
 
-customer:{...customer},
+customer:{
 
-items:items,
+name:profile.name,
+shop:profile.shop,
+mobile:profile.mobile,
+address:profile.address,
+lat:profile.lat||"",
+lng:profile.lng||""
+
+},
+
+items:orderItems,
 
 total:total,
 
 status:"Pending",
 
-date:new Date()
-.toLocaleString("en-IN")
+date:new Date().toLocaleString(),
+
+notified:false
 
 };
 
-orders.unshift(order);
 
-items.forEach(x=>{
+orders.push(order);
+
+
+/* Reduce stock */
+
+orderItems.forEach(item=>{
 
 let p=
-products.find(
-p=>p.id===x.id
+products.find(x=>x.id==item.id);
+
+if(p){
+
+p.stock=
+Math.max(
+0,
+Number(p.stock)-Number(item.qty)
 );
 
-p.stock-=x.qty;
+}
 
 });
+
 
 cart=[];
 
 save();
 
+updateCart();
+
+renderProducts();
+
+updateOrderBadge();
+
 closeModal("cartModal");
 
+
 alert(
-"Order placed successfully!\nOrder ID: "+
-id
+"Order placed successfully!\n\nOrder ID: "+
+order.id
 );
 
-openMyOrders();
-
 }
 
-function openMyOrders(){
 
-closeModal("accountModal");
-
-document.getElementById("ordersModal")
-.style.display="block";
-
-let mine=
-orders.filter(
-o=>customer&&
-o.customer.mobile===customer.mobile
-);
-
-if(!mine.length){
-
-document.getElementById("myOrdersArea")
-.innerHTML=
-'<div class="empty">No orders yet.</div>';
-
-return;
-
-}
-
-document.getElementById("myOrdersArea")
-.innerHTML=
-
-mine.map(o=>`
-
-<div class="adminitem">
-
-<div class="row">
-
-<b>${o.id}</b>
-
-<span class="status">
-${o.status}
-</span>
-
-</div>
-
-<div class="small">
-${o.date}
-</div>
-
-<p>
-Total:
-<b>₹${money(o.total)}</b>
-</p>
-
-${o.items.map(i=>
-escapeHtml(i.name)+
-" × "+
-i.qty
-).join("<br>")}
-
-</div>
-
-`).join("");
-
-}
+/* =========================
+ADMIN
+========================= */
 
 function openAdmin(){
 
 document.getElementById("adminModal")
 .style.display="block";
 
-if(
-localStorage.getItem("adminLogged")
-==="yes"
-){
+let logged=
+localStorage.getItem("adminLogged");
+
+if(logged=="yes")
 
 showAdmin();
 
-}else{
+else
 
 showAdminLogin();
 
 }
 
-}
+
+/* =========================
+ADMIN LOGIN
+========================= */
 
 function showAdminLogin(){
 
 document.getElementById("adminArea")
-.innerHTML=
-
-`
+.innerHTML=`
 
 <h2>Admin Login</h2>
 
@@ -1801,15 +1524,13 @@ Login
 </button>
 
 <p class="small">
-
-First login:
-admin / 123456
-
+Default: admin / 123456
 </p>
 
 `;
 
 }
+
 
 function adminLogin(){
 
@@ -1821,9 +1542,17 @@ let p=
 localStorage.getItem("adminPass")
 ||"123456";
 
+
 if(
-document.getElementById("adminUser").value===u&&
-document.getElementById("adminPass").value===p
+
+document.getElementById("adminUser")
+.value==u
+
+&&
+
+document.getElementById("adminPass")
+.value==p
+
 ){
 
 localStorage.setItem(
@@ -1835,185 +1564,125 @@ showAdmin();
 
 }else{
 
-alert(
-"Wrong User ID or Password"
-);
+alert("Wrong User ID or Password");
 
 }
 
 }
+
+
+/* =========================
+ADMIN PANEL
+========================= */
 
 function showAdmin(){
 
-let pending=
-orders.filter(
-o=>o.status==="Pending"
-).length;
+updateOrderBadge();
+
 
 document.getElementById("adminArea")
-.innerHTML=
+.innerHTML=`
 
-`
-
-<h2>Admin Dashboard</h2>
-
-<div class="statgrid">
-
-<div class="stat">
-Orders
-<br>
-<b>${orders.length}</b>
-</div>
-
-<div class="stat">
-Pending
-<br>
-<b>${pending}</b>
-</div>
-
-<div class="stat">
-Products
-<br>
-<b>${products.length}</b>
-</div>
-
-<div class="stat">
-Low Stock
-<br>
-<b>${products.filter(p=>p.stock<=5).length}</b>
-</div>
-
-</div>
-
-<div class="adminnav">
-
-<button onclick="adminProducts()">
-🛍️ Products
-</button>
-
-<button onclick="manageCategories()">
-🏷️ Categories
-</button>
-
-<button onclick="showOrders()">
-📦 Orders
-<span class="badge">${pending}</span>
-</button>
-
-<button onclick="stockManager()">
-📊 Stock
-</button>
-
-<button onclick="bannerManager()">
-🖼️ Banner
-</button>
-
-<button onclick="themeManager()">
-🎨 Theme
-</button>
-
-<button onclick="changeAdmin()">
-🔐 Credentials
-</button>
-
-<button onclick="adminLogout()">
-Logout
-</button>
-
-</div>
-
-<hr>
-
-<h3>Recent Orders</h3>
-
-${orders.slice(0,5).map(o=>`
-
-<div class="adminitem">
-
-<div class="row">
-
-<b>${o.id}</b>
-
-<span class="status">
-${o.status}
-</span>
-
-</div>
-
-${escapeHtml(o.customer.name)}
-<br>
-
-<span class="small">
-${escapeHtml(o.customer.shop)}
-•
-₹${money(o.total)}
-</span>
-
-</div>
-
-`).join("")}
-
-`;
-
-}
-
-function adminProducts(){
-
-document.getElementById("adminArea")
-.innerHTML=
-
-`
-
-<button onclick="showAdmin()">
-← Dashboard
-</button>
-
-<h2>Products</h2>
+<h2>Admin Panel</h2>
 
 <button
 class="primary"
-onclick="productForm()">
+onclick="addProduct()">
 
 ➕ Add Product
 
 </button>
 
-`+
+<button
+class="primary"
+onclick="manageCategories()">
 
-products.map(p=>`
+🏷️ Categories
+
+</button>
+
+<button
+class="primary"
+onclick="showOrders()">
+
+📦 Orders
+<span id="adminOrderCount"></span>
+
+</button>
+
+<button
+class="primary"
+onclick="manageStock()">
+
+📊 Stock
+
+</button>
+
+<button
+class="primary"
+onclick="manageBanner()">
+
+🖼️ Banner
+
+</button>
+
+<button
+class="primary"
+onclick="changeAdmin()">
+
+🔐 Change User ID / Password
+
+</button>
+
+<button
+class="primary"
+onclick="adminLogout()">
+
+Logout
+
+</button>
+
+<hr>
+
+<h3>Products</h3>
+
+${products.map(p=>`
 
 <div class="adminitem">
 
 <div class="row">
 
-<img
-class="thumb"
-src="${p.img}">
+<div>
 
-<div style="flex:1">
-
-<b>${escapeHtml(p.name)}</b>
+<b>${escapeHTML(p.name)}</b>
 
 <br>
 
 <span class="small">
+${escapeHTML(p.cat)}
+</span>
 
-${escapeHtml(p.cat)}
-•
-MRP ₹${money(p.mrp)}
-•
-Deal ₹${money(p.deal)}
-•
-Stock ${p.stock}
+<br>
 
+<span>
+MRP ₹${p.mrp||p.price}
+&nbsp; | &nbsp;
+Deal ₹${p.price}
+</span>
+
+<br>
+
+<span class="small">
+Stock: ${p.stock}
 </span>
 
 </div>
 
-</div>
+<div>
 
 <button
-onclick="productForm(${p.id})">
+class="edit"
+onclick="editProduct(${p.id})">
 
 Edit
 
@@ -2029,155 +1698,84 @@ Delete
 
 </div>
 
-`).join("");
+</div>
 
-}
+</div>
 
-function productForm(id){
-
-let p=
-id
-?
-products.find(x=>x.id===id)
-:
-null;
-
-document.getElementById("adminArea")
-.innerHTML=
-
-`
-
-<button onclick="adminProducts()">
-← Products
-</button>
-
-<h2>
-${p?"Edit":"Add"} Product
-</h2>
-
-<input
-id="pName"
-placeholder="Product Name"
-value="${p?escapeHtml(p.name):""}">
-
-<select id="pCat">
-
-${categories
-.filter(c=>c!=="All")
-.map(c=>
-'<option '+
-(p&&p.cat===c?"selected":"")+
-'>'+
-escapeHtml(c)+
-'</option>'
-).join("")}
-
-</select>
-
-<input
-id="pMrp"
-type="number"
-placeholder="MRP Price"
-value="${p?p.mrp:""}">
-
-<input
-id="pDeal"
-type="number"
-placeholder="Deal Price"
-value="${p?p.deal:""}">
-
-<input
-id="pStock"
-type="number"
-placeholder="Stock"
-value="${p?p.stock:20}">
-
-<p class="small">
-Product Image — Select from phone gallery
-</p>
-
-<input
-id="pImage"
-type="file"
-accept="image/*">
-
-${p?
-
-'<img class="thumb" src="'+
-p.img+
-'">'
-
-:""}
-
-<button
-class="primary"
-onclick="saveProduct(${id||0})">
-
-Save Product
-
-</button>
+`).join("")}
 
 `;
 
 }
 
-function saveProduct(id){
+
+/* =========================
+ADD PRODUCT
+========================= */
+
+function addProduct(){
 
 let name=
-document.getElementById("pName")
-.value.trim();
+prompt("Product name?");
+
+if(!name)return;
+
 
 let cat=
-document.getElementById("pCat")
-.value;
+prompt(
+"Category?\n\nAvailable: "+
+categories
+.filter(x=>x!="All")
+.join(", ")
+);
 
-let mrp=
-Number(document.getElementById("pMrp").value);
+if(!cat)return;
 
-let deal=
-Number(document.getElementById("pDeal").value);
 
-let stock=
-Number(document.getElementById("pStock").value);
-
-if(
-!name||
-!cat||
-mrp<0||
-deal<0||
-stock<0
-){
+if(!categories.includes(cat)){
 
 alert(
-"Please fill all details."
+"Category does not exist.\nPlease create it in Categories first."
 );
 
 return;
 
 }
 
-let file=
-document.getElementById("pImage")
-.files[0];
 
-function finish(img){
+let mrp=
+Number(prompt("MRP Price?"));
 
-if(id){
+if(!mrp||mrp<=0){
 
-let p=
-products.find(
-x=>x.id===id
+alert("Enter valid MRP.");
+
+return;
+
+}
+
+
+let price=
+Number(prompt("Deal Price?"));
+
+if(!price||price<=0){
+
+alert("Enter valid Deal Price.");
+
+return;
+
+}
+
+
+let stock=
+Number(prompt("Stock quantity?",20));
+
+
+let img=
+prompt(
+"Image URL?\n\nYou can later use Edit to upload a phone image."
 );
 
-p.name=name;
-p.cat=cat;
-p.mrp=mrp;
-p.deal=deal;
-p.stock=stock;
-
-if(img)p.img=img;
-
-}else{
 
 products.push({
 
@@ -2189,300 +1787,385 @@ cat:cat,
 
 mrp:mrp,
 
-deal:deal,
+price:price,
 
-stock:stock,
+stock:stock||0,
 
-img:img||placeholder
+img:img||
+"https://via.placeholder.com/300"
 
 });
 
-}
 
 save();
 
-adminProducts();
+showAdmin();
 
-alert(
-"Product saved successfully."
-);
+renderCategories();
+
+renderProducts();
 
 }
 
-if(file){
+
+/* =========================
+EDIT PRODUCT
+========================= */
+
+function editProduct(id){
+
+let p=
+products.find(x=>x.id==id);
+
+if(!p)return;
+
+
+let name=
+prompt("Product name",p.name);
+
+if(name!==null)
+p.name=name;
+
+
+let mrp=
+prompt("MRP Price",p.mrp||p.price);
+
+if(mrp!==null)
+p.mrp=Number(mrp);
+
+
+let price=
+prompt("Deal Price",p.price);
+
+if(price!==null)
+p.price=Number(price);
+
+
+let stock=
+prompt("Stock",p.stock);
+
+if(stock!==null)
+p.stock=Number(stock);
+
+
+let cat=
+prompt(
+"Category",
+p.cat
+);
+
+if(cat!==null){
+
+if(!categories.includes(cat)){
+
+alert(
+"Category does not exist. Create it first."
+);
+
+}else{
+
+p.cat=cat;
+
+}
+
+}
+
+
+let upload=
+confirm(
+"Do you want to select a new image from your phone?"
+);
+
+if(upload){
+
+chooseProductImage(id);
+
+}else{
+
+let img=
+prompt(
+"Image URL",
+p.img
+);
+
+if(img!==null)
+p.img=img;
+
+}
+
+
+save();
+
+showAdmin();
+
+renderCategories();
+
+renderProducts();
+
+}
+
+
+/* =========================
+PHONE IMAGE UPLOAD
+========================= */
+
+function chooseProductImage(id){
+
+let input=
+document.createElement("input");
+
+input.type="file";
+
+input.accept="image/*";
+
+
+input.onchange=function(){
+
+let file=input.files[0];
+
+if(!file)return;
+
 
 let reader=
 new FileReader();
 
-reader.onload=
-function(){
 
-finish(
-reader.result
-);
+reader.onload=function(e){
+
+let p=
+products.find(x=>x.id==id);
+
+if(p){
+
+p.img=e.target.result;
+
+save();
+
+showAdmin();
+
+renderProducts();
+
+alert("Product image updated.");
+
+}
 
 };
 
+
 reader.readAsDataURL(file);
 
-}else{
+};
 
-finish("");
+
+input.click();
 
 }
 
-}
+
+/* =========================
+DELETE PRODUCT
+========================= */
 
 function deleteProduct(id){
 
 if(
-confirm(
-"Delete this product?"
-)
+confirm("Delete this product?")
 ){
 
 products=
 products.filter(
-p=>p.id!==id
-);
-
-cart=
-cart.filter(
-x=>x.id!==id
+p=>p.id!=id
 );
 
 save();
 
-adminProducts();
+showAdmin();
+
+renderProducts();
 
 }
 
 }
+
+
+/* =========================
+CATEGORIES
+========================= */
 
 function manageCategories(){
 
-document.getElementById("adminArea")
-.innerHTML=
-
-`
-
-<button onclick="showAdmin()">
-← Dashboard
-</button>
-
-<h2>Categories</h2>
-
-<input
-id="newCategory"
-placeholder="New Category">
-
-<button
-class="primary"
-onclick="addCategory()">
-
-Add Category
-
-</button>
-
-`+
-
+let current=
 categories
-.filter(c=>c!=="All")
-.map(c=>`
+.filter(x=>x!="All")
+.join(",");
 
-<div class="adminitem row">
-
-<b>${escapeHtml(c)}</b>
-
-<button
-class="danger"
-onclick="deleteCategory('${escapeHtml(c)}')">
-
-Delete
-
-</button>
-
-</div>
-
-`).join("");
-
-}
-
-function addCategory(){
 
 let c=
-document.getElementById("newCategory")
-.value.trim();
-
-if(!c)return;
-
-if(
-categories.includes(c)
-){
-
-alert(
-"Category already exists."
+prompt(
+"Enter category names separated by commas",
+current
 );
 
-return;
+if(c===null)return;
 
-}
 
-categories.push(c);
+let newCats=
+c.split(",")
+.map(x=>x.trim())
+.filter(Boolean);
 
-save();
-
-manageCategories();
-
-}
-
-function deleteCategory(c){
-
-if(
-products.some(
-p=>p.cat===c
-)
-){
-
-alert(
-"Products are using this category. Change product category first."
-);
-
-return;
-
-}
 
 categories=
-categories.filter(
-x=>x!==c
-);
+["All",...newCats];
 
-save();
 
-manageCategories();
+if(
+selectedCat!="All"
+&&
+!categories.includes(selectedCat)
+){
+
+selectedCat="All";
 
 }
 
-function stockManager(){
+
+save();
+
+showAdmin();
+
+renderCategories();
+
+renderProducts();
+
+}
+
+
+/* =========================
+STOCK
+========================= */
+
+function manageStock(){
 
 document.getElementById("adminArea")
-.innerHTML=
-
-`
+.innerHTML=`
 
 <button onclick="showAdmin()">
-← Dashboard
+← Back
 </button>
 
 <h2>Stock Management</h2>
 
-`+
+<div class="notice">
 
-products.map(p=>`
+Stock can be updated here.
+<br><br>
+Live automatic Excel synchronization
+requires a backend/API connection.
+
+</div>
+
+${products.map(p=>`
 
 <div class="adminitem">
 
-<b>
-${escapeHtml(p.name)}
-</b>
+<b>${escapeHTML(p.name)}</b>
 
-<p>
-Current Stock:
-<b>${p.stock}</b>
-</p>
+<br>
+
+<span class="small">
+${escapeHTML(p.cat)}
+</span>
 
 <input
 id="stock_${p.id}"
 type="number"
 min="0"
-value="${p.stock}">
+value="${p.stock}"
+placeholder="Stock">
 
 <button
 class="primary"
-onclick="updateStock(${p.id})">
+onclick="saveStock(${p.id})">
 
-Update Stock
+Save Stock
 
 </button>
 
 </div>
 
-`).join("")+
-
-`
-
-<p class="notice">
-
-Excel live synchronization requires a backend/API.
-This version provides manual stock management.
-
-</p>
+`).join("")}
 
 `;
 
 }
 
-function updateStock(id){
 
-let value=
-Number(
+function saveStock(id){
+
+let input=
 document.getElementById(
 "stock_"+id
-).value
 );
-
-if(value<0)return;
 
 let p=
-products.find(
-x=>x.id===id
-);
+products.find(x=>x.id==id);
 
-p.stock=value;
+if(p){
+
+p.stock=
+Math.max(0,Number(input.value));
 
 save();
 
-stockManager();
+renderProducts();
+
+alert("Stock updated.");
+
+manageStock();
 
 }
 
-function bannerManager(){
+}
+
+
+/* =========================
+BANNER
+========================= */
+
+function manageBanner(){
 
 document.getElementById("adminArea")
-.innerHTML=
-
-`
+.innerHTML=`
 
 <button onclick="showAdmin()">
-← Dashboard
+← Back
 </button>
 
-<h2>Banner Management</h2>
+<h2>Banner</h2>
 
-${banner?
-
-'<img src="'+banner+'" style="width:100%;border-radius:10px">'
-
-:
-
-"<p>No banner added.</p>"
-}
+<p class="small">
+Upload banner image from your phone.
+</p>
 
 <input
-id="bannerFile"
 type="file"
-accept="image/*">
+id="bannerFile"
+accept="image/*"
+onchange="previewBanner(event)">
+
+<div id="bannerPreview"></div>
 
 <button
 class="primary"
 onclick="saveBanner()">
 
-Upload / Replace Banner
+Save Banner
 
 </button>
 
 <button
-class="primary danger"
+class="primary"
 onclick="removeBanner()">
 
 Remove Banner
@@ -2491,31 +2174,66 @@ Remove Banner
 
 `;
 
+if(banner){
+
+document.getElementById(
+"bannerPreview"
+).innerHTML=
+`<img class="preview" src="${banner}">`;
+
 }
+
+}
+
+
+function previewBanner(event){
+
+let file=
+event.target.files[0];
+
+if(!file)return;
+
+
+let reader=
+new FileReader();
+
+
+reader.onload=function(e){
+
+document.getElementById(
+"bannerPreview"
+).innerHTML=
+`<img class="preview" src="${e.target.result}">`;
+
+};
+
+
+reader.readAsDataURL(file);
+
+}
+
 
 function saveBanner(){
 
-let file=
-document.getElementById("bannerFile")
-.files[0];
+let input=
+document.getElementById("bannerFile");
 
-if(!file){
+if(!input.files.length){
 
-alert(
-"Choose banner image."
-);
+alert("Please select an image.");
 
 return;
 
 }
 
+
 let reader=
 new FileReader();
 
-reader.onload=function(){
 
-banner=
-reader.result;
+reader.onload=function(e){
+
+banner=e.target.result;
 
 localStorage.setItem(
 "bannerImage",
@@ -2524,13 +2242,19 @@ banner
 
 renderBanner();
 
-bannerManager();
+alert("Banner updated.");
+
+showAdmin();
 
 };
 
-reader.readAsDataURL(file);
+
+reader.readAsDataURL(
+input.files[0]
+);
 
 }
+
 
 function removeBanner(){
 
@@ -2542,186 +2266,164 @@ localStorage.removeItem(
 
 renderBanner();
 
-bannerManager();
+alert("Banner removed.");
+
+showAdmin();
 
 }
 
-function themeManager(){
 
-document.getElementById("adminArea")
-.innerHTML=
-
-`
-
-<button onclick="showAdmin()">
-← Dashboard
-</button>
-
-<h2>Theme Settings</h2>
-
-<label>Primary Colour</label>
-
-<input
-id="primaryColor"
-type="color"
-value="${theme.primary}">
-
-<label>Secondary Colour</label>
-
-<input
-id="secondaryColor"
-type="color"
-value="${theme.secondary}">
-
-<button
-class="primary"
-onclick="saveTheme()">
-
-Save Theme
-
-</button>
-
-`;
-
-}
-
-function saveTheme(){
-
-theme={
-
-primary:
-document.getElementById("primaryColor").value,
-
-secondary:
-document.getElementById("secondaryColor").value
-
-};
-
-localStorage.setItem(
-"theme",
-JSON.stringify(theme)
-);
-
-applyTheme();
-
-themeManager();
-
-alert(
-"Theme updated."
-);
-
-}
+/* =========================
+ORDERS
+========================= */
 
 function showOrders(){
 
-document.getElementById("adminArea")
-.innerHTML=
+orders=
+JSON.parse(
+localStorage.getItem("orders")||"[]"
+);
 
-`
+
+document.getElementById("adminArea")
+.innerHTML=`
 
 <button onclick="showAdmin()">
-← Dashboard
+← Back
 </button>
 
 <h2>Orders</h2>
 
-`+
-
-(
-
+${
 orders.length
-
 ?
+orders.slice().reverse().map(o=>`
 
-orders.map(o=>`
-
-<div class="adminitem">
+<div class="orderbox">
 
 <div class="row">
 
 <b>${o.id}</b>
 
-<select
-onchange="changeStatus('${o.id}',this.value)">
-
-${[
-"Pending",
-"Confirmed",
-"Out for Delivery",
-"Delivered",
-"Cancelled"
-].map(s=>
-
-'<option '+
-(o.status===s?"selected":"")+
-'>'+
-s+
-'</option>'
-
-).join("")}
-
-</select>
+<span class="orderstatus">
+${o.status||"Pending"}
+</span>
 
 </div>
 
-<p>
+<hr>
 
-<b>
-${escapeHtml(o.customer.name)}
-</b>
-
-<br>
-
-Shop:
-${escapeHtml(o.customer.shop)}
-
-<br>
-
-Mobile:
-${o.customer.mobile}
-
-<br>
-
-Address:
-${escapeHtml(o.customer.address)}
-
-</p>
+<b>Customer</b>
 
 <p>
-
-Total:
-<b>
-₹${money(o.total)}
-</b>
-
-</p>
-
-${o.items.map(i=>
-
-escapeHtml(i.name)+
-" × "+
-i.qty+
-" — ₹"+
-money(i.subtotal)
-
-).join("<br>")}
-
+Name: ${escapeHTML(o.customer?.name||"")}
 <br>
+Shop: ${escapeHTML(o.customer?.shop||"")}
+<br>
+Mobile: ${escapeHTML(o.customer?.mobile||"")}
+<br>
+Address: ${escapeHTML(o.customer?.address||"")}
+</p>
 
 ${
-o.customer.lat
-
+o.customer?.lat
 ?
+`<a
+href="https://www.google.com/maps?q=${o.customer.lat},${o.customer.lng}"
+target="_blank">
 
-'<a class="maplink" target="_blank" href="https://www.google.com/maps?q='+
-o.customer.lat+
-','+
-o.customer.lng+
-'">📍 View Customer GPS Location</a>'
+<button class="primary">
+📍 View Location on Map
+</button>
 
+</a>`
 :
+"<p class='small'>GPS location not available.</p>"
+}
 
-"<span class='small'>GPS not available</span>"
+<hr>
+
+<b>Products</b>
+
+${(o.items||[]).map(item=>`
+
+<div class="cartrow">
+
+<div>
+
+${escapeHTML(item.name)}
+
+<br>
+
+<span class="small">
+
+Qty: ${item.qty}
+<br>
+MRP: ₹${item.mrp}
+<br>
+Deal: ₹${item.dealPrice}
+
+</span>
+
+</div>
+
+<b>
+₹${item.subtotal}
+</b>
+
+</div>
+
+`).join("")}
+
+<h3>
+Total: ₹${o.total}
+</h3>
+
+<p class="small">
+Order Date: ${escapeHTML(o.date)}
+</p>
+
+<select
+onchange="changeOrderStatus('${o.id}',this.value)">
+
+<option
+${o.status=="Pending"?"selected":""}>
+Pending
+</option>
+
+<option
+${o.status=="Confirmed"?"selected":""}>
+Confirmed
+</option>
+
+<option
+${o.status=="Out for Delivery"?"selected":""}>
+Out for Delivery
+</option>
+
+<option
+${o.status=="Delivered"?"selected":""}>
+Delivered
+</option>
+
+<option
+${o.status=="Cancelled"?"selected":""}>
+Cancelled
+</option>
+
+</select>
+
+${
+o.status=="Confirmed"
+?
+`<button
+class="primary"
+onclick="sendWhatsApp('${o.id}')">
+
+📱 WhatsApp Customer
+
+</button>`
+:""
 }
 
 </div>
@@ -2730,102 +2432,197 @@ o.customer.lng+
 
 :
 
-'<div class="empty">No orders yet.</div>'
+"<p>No orders yet.</p>"
+}
 
-);
+`;
 
 }
 
-function changeStatus(id,status){
+
+/* =========================
+ORDER STATUS
+========================= */
+
+function changeOrderStatus(id,status){
 
 let order=
-orders.find(
-o=>o.id===id
-);
+orders.find(x=>x.id==id);
 
 if(!order)return;
+
+
+let oldStatus=
+order.status;
+
 
 order.status=status;
 
 save();
 
-if(status==="Confirmed"){
 
-sendWhatsApp(order);
+if(
+status=="Confirmed"
+&&
+oldStatus!="Confirmed"
+){
+
+alert(
+"Order confirmed.\nYou can now send WhatsApp message."
+);
 
 }
+
 
 showOrders();
 
 }
 
-function sendWhatsApp(order){
+
+/* =========================
+WHATSAPP
+========================= */
+
+function sendWhatsApp(id){
+
+let order=
+orders.find(x=>x.id==id);
+
+if(!order)return;
+
+
+let mobile=
+order.customer.mobile;
+
 
 let message=
+"Gayatri Enterprises - Dodla Ice Creams%0A%0A"+
+"Order Confirmed%0A"+
+"Order ID: "+order.id+"%0A"+
+"Customer: "+encodeURIComponent(order.customer.name)+"%0A"+
+"Shop: "+encodeURIComponent(order.customer.shop)+"%0A%0A";
 
-"Order "+order.id+
-" confirmed.%0A"+
-"Customer: "+
-encodeURIComponent(order.customer.name)+
-"%0A"+
-"Total: ₹"+
+
+(order.items||[]).forEach(item=>{
+
+message+=
+encodeURIComponent(item.name)+
+" x "+
+item.qty+
+" = ₹"+
+item.subtotal+
+"%0A";
+
+});
+
+
+message+=
+"%0ATotal: ₹"+
 order.total+
-"%0A"+
-"Status: Confirmed%0A"+
-"Thank you - Gayatri Enterprises / Dodla Ice Creams";
+"%0A%0A"+
+"Thank you for your order.";
 
-if(
-confirm(
-"Order confirmed. Open WhatsApp confirmation?"
-)
-){
 
 window.open(
 "https://wa.me/91"+
-order.customer.mobile+
-"?text="+
-message,
+mobile+
+"?text="+message,
 "_blank"
 );
 
 }
 
+
+/* =========================
+ORDER BADGE
+========================= */
+
+function updateOrderBadge(){
+
+let count=
+orders.filter(
+o=>!o.notified
+).length;
+
+
+let badge=
+document.getElementById("orderBadge");
+
+
+if(count>0){
+
+badge.style.display="inline-block";
+
+badge.textContent=count;
+
+}else{
+
+badge.style.display="none";
+
 }
+
+
+let adminCount=
+document.getElementById(
+"adminOrderCount"
+);
+
+if(adminCount){
+
+adminCount.innerHTML=
+count>0
+?
+` <span class="badge">${count} New</span>`
+:"";
+
+}
+
+}
+
+
+/* =========================
+CHANGE ADMIN LOGIN
+========================= */
 
 function changeAdmin(){
 
-let user=
+let u=
 prompt(
-"New Admin User ID",
+"New User ID",
 localStorage.getItem("adminUser")||"admin"
 );
 
-if(!user)return;
+if(!u)return;
 
-let pass=
-prompt(
-"New Admin Password"
-);
 
-if(!pass)return;
+let p=
+prompt("New Password");
+
+if(!p)return;
+
 
 localStorage.setItem(
 "adminUser",
-user
+u
 );
 
 localStorage.setItem(
 "adminPass",
-pass
+p
 );
 
 alert(
-"Admin credentials changed."
+"Admin login changed."
 );
 
 showAdmin();
 
 }
+
+
+/* =========================
+ADMIN LOGOUT
+========================= */
 
 function adminLogout(){
 
@@ -2837,6 +2634,31 @@ showAdminLogin();
 
 }
 
+
+/* =========================
+CUSTOMER LOGOUT
+========================= */
+
+function logoutCustomer(){
+
+localStorage.removeItem(
+"customerProfile"
+);
+
+currentGPS={
+lat:"",
+lng:""
+};
+
+openAccount();
+
+}
+
+
+/* =========================
+MODAL
+========================= */
+
 function closeModal(id){
 
 document.getElementById(id)
@@ -2844,11 +2666,50 @@ document.getElementById(id)
 
 }
 
+
+/* =========================
+SAFE TEXT
+========================= */
+
+function escapeHTML(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+return escapeHTML(value);
+
+}
+
+
+function escapeText(value){
+
+return String(value??"")
+.replace(/'/g,"\\'")
+.replace(/"/g,"&quot;");
+
+}
+
+
+/* =========================
+START
+========================= */
+
 renderCategories();
 
 renderProducts();
 
 updateCart();
+
+updateOrderBadge();
 
 renderBanner();
 
