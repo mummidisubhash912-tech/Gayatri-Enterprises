@@ -1,22 +1,2858 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gayatri Enterprises - Dodla Ice Creams</title>
+
+<style>
+:root{
+ --primary:#7b1230;
+ --secondary:#e39a37;
+ --bg:#f6f7fb;
+ --card:#fff;
+ --text:#222;
+ --muted:#777;
+ --danger:#c62828;
+ --success:#16834b;
+}
+
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:var(--bg);
+ color:var(--text);
+}
+
+button,input,select,textarea{font:inherit}
+
+button{cursor:pointer}
+
+.top{
+ background:var(--primary);
+ color:white;
+ padding:13px;
+ text-align:center;
+}
+
+.top b{font-size:20px}
+
+header{
+ background:#fff;
+ position:sticky;
+ top:0;
+ z-index:20;
+ box-shadow:0 2px 10px #0001;
+}
+
+nav{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:10px 15px;
+}
+
+.logo{
+ font-weight:800;
+ color:var(--primary);
+ font-size:18px;
+}
+
+.navbtn{
+ border:0;
+ background:white;
+ font-size:21px;
+ margin-left:7px;
+}
+
+.badge{
+ background:#e53935;
+ color:white;
+ border-radius:20px;
+ padding:2px 7px;
+ font-size:11px;
+}
+
+.search{
+ padding:0 15px 12px;
+}
+
+.search input{
+ width:100%;
+ padding:13px;
+ border:1px solid #ddd;
+ border-radius:10px;
+}
+
+.hero{
+ color:white;
+ padding:35px 20px;
+ text-align:center;
+ background:linear-gradient(135deg,var(--primary),var(--secondary));
+}
+
+.hero h1{
+ margin:0 0 8px;
+ font-size:28px;
+}
+
+section{padding:18px 15px}
+
+h2{margin:0 0 12px}
+
+.cats{
+ display:flex;
+ gap:10px;
+ overflow:auto;
+}
+
+.cats button{
+ white-space:nowrap;
+ border:1px solid var(--primary);
+ background:white;
+ color:var(--primary);
+ border-radius:20px;
+ padding:9px 15px;
+}
+
+.cats button.active{
+ background:var(--primary);
+ color:white;
+}
+
+.products{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+
+.card{
+ background:white;
+ border-radius:14px;
+ padding:10px;
+ box-shadow:0 2px 10px #0001;
+}
+
+.card img{
+ width:100%;
+ height:145px;
+ object-fit:contain;
+ border-radius:10px;
+ background:#fafafa;
+}
+
+.card h3{
+ font-size:15px;
+ margin:8px 0 4px;
+}
+
+.price{
+ font-weight:bold;
+ color:var(--primary);
+ font-size:17px;
+}
+
+.mrp{
+ text-decoration:line-through;
+ color:#888;
+ font-size:12px;
+ margin-right:5px;
+}
+
+.small{
+ font-size:12px;
+ color:var(--muted);
+}
+
+.card button,
+.primary{
+ width:100%;
+ border:0;
+ background:var(--primary);
+ color:white;
+ padding:10px;
+ border-radius:8px;
+ margin-top:8px;
+}
+
+.secondary{
+ background:#eee!important;
+ color:#222!important;
+}
+
+.danger{
+ background:var(--danger)!important;
+ color:white!important;
+}
+
+.success{
+ background:var(--success)!important;
+ color:white!important;
+}
+
+footer{
+ background:#222;
+ color:white;
+ text-align:center;
+ padding:25px;
+ margin-top:20px;
+}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#0008;
+ z-index:50;
+ padding:15px;
+ overflow:auto;
+}
+
+.box{
+ background:white;
+ border-radius:15px;
+ padding:20px;
+ max-width:600px;
+ margin:25px auto;
+ max-height:92vh;
+ overflow:auto;
+}
+
+.close{
+ float:right;
+ background:none;
+ border:0;
+ font-size:26px;
+}
+
+.box input,
+.box select,
+.box textarea{
+ width:100%;
+ padding:12px;
+ margin:6px 0;
+ border:1px solid #ddd;
+ border-radius:8px;
+}
+
+.row{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:8px;
+}
+
+.adminitem{
+ border-bottom:1px solid #ddd;
+ padding:12px 0;
+}
+
+.cartrow{
+ display:flex;
+ justify-content:space-between;
+ border-bottom:1px solid #ddd;
+ padding:10px 0;
+}
+
+.qty button{
+ border:0;
+ background:#eee;
+ padding:5px 9px;
+ border-radius:6px;
+}
+
+.loginScreen{
+ position:fixed;
+ inset:0;
+ background:linear-gradient(135deg,var(--primary),var(--secondary));
+ z-index:100;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.loginBox{
+ background:white;
+ width:100%;
+ max-width:430px;
+ border-radius:22px;
+ padding:25px;
+ box-shadow:0 10px 40px #0004;
+}
+
+.loginLogo{
+ text-align:center;
+ color:var(--primary);
+ font-size:24px;
+ font-weight:800;
+}
+
+.loginSub{
+ text-align:center;
+ color:#777;
+ margin:7px 0 20px;
+}
+
+.loginOption{
+ padding:15px;
+ border:1px solid #ddd;
+ border-radius:12px;
+ margin:10px 0;
+ background:white;
+ width:100%;
+ text-align:left;
+}
+
+.loginOption b{
+ display:block;
+ color:var(--primary);
+ margin-bottom:5px;
+}
+
+.hidden{display:none!important}
+
+.notice{
+ padding:10px;
+ border-radius:9px;
+ background:#fff3cd;
+ margin:8px 0;
+}
+
+.statgrid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:8px;
+}
+
+.stat{
+ background:#f8f8f8;
+ padding:14px;
+ border-radius:12px;
+}
+
+.stat b{
+ font-size:22px;
+ color:var(--primary);
+}
+
+.adminnav{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:8px;
+ margin:10px 0;
+}
+
+.adminnav button{
+ border:1px solid #ddd;
+ background:white;
+ padding:10px;
+ border-radius:9px;
+}
+
+.thumb{
+ width:70px;
+ height:70px;
+ object-fit:contain;
+ border-radius:8px;
+ background:#f7f7f7;
+}
+
+.maplink{
+ display:inline-block;
+ margin-top:8px;
+ color:#1267c4;
+}
+
+.empty{
+ text-align:center;
+ padding:30px;
+ color:#777;
+}
+
+.status{
+ display:inline-block;
+ padding:5px 9px;
+ border-radius:15px;
+ background:#eee;
+ font-size:12px;
+}
+
+.banner{
+ margin:15px;
+ border-radius:15px;
+ overflow:hidden;
+ background:#fff3e6;
+}
+
+.banner img{
+ width:100%;
+ display:block;
+ max-height:250px;
+ object-fit:cover;
+}
+
+.categoryBlock{
+ margin-bottom:25px;
+}
+
+.categoryHead{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+@media(min-width:700px){
+ .products{
+  grid-template-columns:repeat(4,1fr);
+ }
+ .statgrid{
+  grid-template-columns:repeat(4,1fr);
+ }
+ .adminnav{
+  grid-template-columns:repeat(4,1fr);
+ }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<div id="loginScreen" class="loginScreen">
+
+<div class="loginBox">
+
+<div class="loginLogo">
 🍦 GAYATRI ENTERPRISES
+</div>
+
+<div class="loginSub">
 Dodla Ice Creams • Kakinada
-👤 Customer Login
+</div>
+
+<button class="loginOption" onclick="customerLoginStart()">
+<b>👤 Customer Login</b>
+<span class="small">
 Order products and manage your account
-⚙️ Admin Login
-Manage products, stock, orders and settings
-Your information is used for ordering and delivery.
-Gayatri Enterprises
+</span>
+</button>
+
+<button class="loginOption" onclick="adminLoginStart()">
+<b>⚙️ Admin Login</b>
+<span class="small">
+Manage products, stock and orders
+</span>
+</button>
+
+</div>
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="top">
+<b>Gayatri Enterprises</b>
+<br>
 Dodla Ice Creams • Kakinada
+</div>
+
+<nav>
+
+<div class="logo">
 🍦 DODLA
-🛒 0 👤 ⚙️
+</div>
 
-Dodla Ice Creams
-Delicious • Quality • Family Packs
-Kakinada
-Categories
-Products
+<div>
 
+<button class="navbtn" onclick="openCart()">
+🛒
+<span id="cartCount" class="badge">0</span>
+</button>
 
+<button class="navbtn" onclick="openAccount()">
+👤
+</button>
+
+<button class="navbtn" onclick="openAdmin()">
+⚙️
+</button>
+
+</div>
+
+</nav>
+
+<div class="search">
+<input
+id="search"
+placeholder="Search ice creams..."
+oninput="renderProducts()">
+</div>
+
+</header>
+
+<div id="bannerArea"></div>
+
+<div class="hero">
+
+<h1>Dodla Ice Creams</h1>
+
+<p>Delicious • Quality • Family Packs</p>
+
+<p>Kakinada</p>
+
+</div>
+
+<section>
+
+<h2>Categories</h2>
+
+<div
+class="cats"
+id="categories">
+</div>
+
+</section>
+
+<section>
+
+<div class="row">
+
+<h2>Products</h2>
+
+<span
+id="productCount"
+class="small">
+</span>
+
+</div>
+
+<div id="products"></div>
+
+</section>
+
+<footer>
+
+<b>
 Gayatri Enterprises – Dodla Ice Creams
+</b>
+
+<p>
 Kakinada, Andhra Pradesh
+</p>
+
+<p>
 Contact: 9912527666
+</p>
+
+</footer>
+
+<!-- CUSTOMER ACCOUNT -->
+
+<div class="modal" id="accountModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModal('accountModal')">
+×
+</button>
+
+<h2>My Account</h2>
+
+<div id="accountArea"></div>
+
+</div>
+
+</div>
+
+<!-- CUSTOMER PROFILE -->
+
+<div class="modal" id="customerModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModal('customerModal')">
+×
+</button>
+
+<h2>Customer Details</h2>
+
+<div id="customerArea"></div>
+
+</div>
+
+</div>
+
+<!-- CART -->
+
+<div class="modal" id="cartModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModal('cartModal')">
+×
+</button>
+
+<h2>Your Cart</h2>
+
+<div id="cartArea"></div>
+
+</div>
+
+</div>
+
+<!-- ORDERS -->
+
+<div class="modal" id="ordersModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModal('ordersModal')">
+×
+</button>
+
+<h2>My Orders</h2>
+
+<div id="myOrdersArea"></div>
+
+</div>
+
+</div>
+
+<!-- ADMIN -->
+
+<div class="modal" id="adminModal">
+
+<div class="box">
+
+<button
+class="close"
+onclick="closeModal('adminModal')">
+×
+</button>
+
+<div id="adminArea"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const placeholder =
+"data:image/svg+xml;charset=UTF-8,"+
+encodeURIComponent(
+'<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">'+
+'<rect width="100%" height="100%" fill="#f7f7f7"/>'+
+'<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="30" fill="#777">'+
+'Dodla Ice Cream'+
+'</text></svg>'
+);
+
+const defaultProducts=[
+
+{
+id:1,
+name:"Vanilla",
+cat:"Cups",
+mrp:40,
+deal:35,
+stock:20,
+img:placeholder
+},
+
+{
+id:2,
+name:"Chocolate",
+cat:"Cups",
+mrp:45,
+deal:40,
+stock:20,
+img:placeholder
+},
+
+{
+id:3,
+name:"Strawberry",
+cat:"Cups",
+mrp:45,
+deal:40,
+stock:20,
+img:placeholder
+},
+
+{
+id:4,
+name:"Butterscotch",
+cat:"Cups",
+mrp:50,
+deal:45,
+stock:20,
+img:placeholder
+},
+
+{
+id:5,
+name:"Chocobar",
+cat:"Bars",
+mrp:35,
+deal:30,
+stock:20,
+img:placeholder
+},
+
+{
+id:6,
+name:"Grape Bar",
+cat:"Bars",
+mrp:35,
+deal:30,
+stock:20,
+img:placeholder
+},
+
+{
+id:7,
+name:"Mango",
+cat:"Bars",
+mrp:35,
+deal:30,
+stock:20,
+img:placeholder
+},
+
+{
+id:8,
+name:"Family Pack",
+cat:"Family Packs",
+mrp:220,
+deal:180,
+stock:10,
+img:placeholder
+}
+
+];
+
+let products=
+JSON.parse(localStorage.getItem("products")||"null")
+||defaultProducts;
+
+products=products.map(p=>({
+
+...p,
+
+mrp:Number(p.mrp ?? p.price ?? 0),
+
+deal:Number(p.deal ?? p.price ?? 0),
+
+stock:Number(p.stock ?? 20),
+
+img:p.img||placeholder
+
+}));
+
+let categories=
+JSON.parse(localStorage.getItem("categories")||"null")
+||["All","Cups","Bars","Family Packs"];
+
+if(!categories.includes("All"))
+categories.unshift("All");
+
+let cart=
+JSON.parse(localStorage.getItem("cart")||"[]");
+
+let wishlist=
+JSON.parse(localStorage.getItem("wishlist")||"[]");
+
+let orders=
+JSON.parse(localStorage.getItem("orders")||"[]");
+
+let customer=
+JSON.parse(localStorage.getItem("customerProfile")||"null");
+
+let selectedCat="All";
+
+let banner=
+localStorage.getItem("bannerImage")||"";
+
+let theme=
+JSON.parse(localStorage.getItem("theme")||"null")
+||
+{
+primary:"#7b1230",
+secondary:"#e39a37"
+};
+
+applyTheme();
+
+function save(){
+
+localStorage.setItem(
+"products",
+JSON.stringify(products)
+);
+
+localStorage.setItem(
+"categories",
+JSON.stringify(categories)
+);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+localStorage.setItem(
+"wishlist",
+JSON.stringify(wishlist)
+);
+
+localStorage.setItem(
+"orders",
+JSON.stringify(orders)
+);
+
+if(customer){
+
+localStorage.setItem(
+"customerProfile",
+JSON.stringify(customer)
+);
+
+}
+
+renderCategories();
+
+renderProducts();
+
+updateCart();
+
+renderBanner();
+
+}
+
+function applyTheme(){
+
+document.documentElement.style
+.setProperty(
+"--primary",
+theme.primary
+);
+
+document.documentElement.style
+.setProperty(
+"--secondary",
+theme.secondary
+);
+
+}
+
+function renderBanner(){
+
+let el=
+document.getElementById("bannerArea");
+
+if(!banner){
+
+el.innerHTML="";
+
+return;
+
+}
+
+el.innerHTML=
+
+'<div class="banner">'+
+
+'<img src="'+banner+'">'+
+
+'</div>';
+
+}
+
+function renderCategories(){
+
+let el=
+document.getElementById("categories");
+
+el.innerHTML=
+
+categories.map(c=>
+
+'<button class="'+
+(c===selectedCat?"active":"")+
+'" onclick="selectCat('+JSON.stringify(c)+')">'+
+escapeHtml(c)+
+'</button>'
+
+).join("");
+
+}
+
+function selectCat(c){
+
+selectedCat=c;
+
+renderCategories();
+
+renderProducts();
+
+}
+
+function renderProducts(){
+
+let q=
+(document.getElementById("search")?.value||"")
+.toLowerCase();
+
+let cats=
+
+selectedCat==="All"
+?
+categories.filter(c=>c!=="All")
+:
+[selectedCat];
+
+let html="";
+
+let count=0;
+
+cats.forEach(cat=>{
+
+let list=
+
+products.filter(p=>
+
+p.cat===cat&&
+p.name.toLowerCase().includes(q)
+
+);
+
+if(!list.length)return;
+
+count+=list.length;
+
+html+=
+
+'<div class="categoryBlock">'+
+
+'<div class="categoryHead">'+
+
+'<h2>'+escapeHtml(cat)+'</h2>'+
+
+'<span class="small">'+
+list.length+
+' products</span>'+
+
+'</div>'+
+
+'<div class="products">';
+
+list.forEach(p=>{
+
+html+=productCard(p);
+
+});
+
+html+='</div></div>';
+
+});
+
+if(!html){
+
+html=
+'<div class="empty">No products found.</div>';
+
+}
+
+document.getElementById("products")
+.innerHTML=html;
+
+document.getElementById("productCount")
+.textContent=count+" products";
+
+}
+
+function productCard(p){
+
+let out=p.stock<=0;
+
+return `
+
+<div class="card">
+
+<img
+src="${p.img}"
+alt="${escapeHtml(p.name)}">
+
+<h3>${escapeHtml(p.name)}</h3>
+
+<div class="small">
+${escapeHtml(p.cat)}
+</div>
+
+<div>
+
+<span class="mrp">
+MRP ₹${money(p.mrp)}
+</span>
+
+<span class="price">
+₹${money(p.deal)}
+</span>
+
+</div>
+
+<div class="small">
+
+${
+out
+?
+"Out of Stock"
+:
+p.stock<=5
+?
+"Low Stock: "+p.stock
+:
+"In Stock: "+p.stock
+}
+
+</div>
+
+<button
+${out?"disabled":""}
+onclick="addCart(${p.id})">
+
+${out?"Out of Stock":"Add to Cart"}
+
+</button>
+
+<button
+class="secondary"
+onclick="toggleWish(${p.id})">
+
+${wishlist.includes(p.id)?"❤️":"♡"}
+Wishlist
+
+</button>
+
+</div>
+
+`;
+
+}
+
+function money(n){
+
+return Number(n||0)
+.toLocaleString("en-IN");
+
+}
+
+function escapeHtml(s){
+
+return String(s??"")
+.replace(/[&<>"']/g,m=>({
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[m]));
+
+}
+
+function addCart(id){
+
+let p=
+products.find(x=>x.id===id);
+
+if(!p||p.stock<=0)return;
+
+let item=
+cart.find(x=>x.id===id);
+
+if(item){
+
+if(item.qty>=p.stock){
+
+alert(
+"Available stock is "+p.stock
+);
+
+return;
+
+}
+
+item.qty++;
+
+}else{
+
+cart.push({
+id:id,
+qty:1
+});
+
+}
+
+save();
+
+alert("Added to cart");
+
+}
+
+function updateCart(){
+
+document.getElementById("cartCount")
+.textContent=
+
+cart.reduce(
+(a,b)=>a+b.qty,
+0
+);
+
+}
+
+function toggleWish(id){
+
+if(wishlist.includes(id))
+
+wishlist=
+wishlist.filter(x=>x!==id);
+
+else
+
+wishlist.push(id);
+
+save();
+
+}
+
+function openCart(){
+
+document.getElementById("cartModal")
+.style.display="block";
+
+renderCart();
+
+}
+
+function renderCart(){
+
+let area=
+document.getElementById("cartArea");
+
+if(!cart.length){
+
+area.innerHTML=
+'<div class="empty">Your cart is empty.</div>';
+
+return;
+
+}
+
+let total=0;
+
+let html="";
+
+cart.forEach(x=>{
+
+let p=
+products.find(y=>y.id===x.id);
+
+if(!p)return;
+
+let sub=
+p.deal*x.qty;
+
+total+=sub;
+
+html+=`
+
+<div class="cartrow">
+
+<div>
+
+<b>${escapeHtml(p.name)}</b>
+
+<br>
+
+<span class="small">
+₹${money(p.deal)} × ${x.qty}
+</span>
+
+<div class="qty">
+
+<button onclick="changeQty(${p.id},-1)">
+−
+</button>
+
+${x.qty}
+
+<button onclick="changeQty(${p.id},1)">
++
+</button>
+
+<button onclick="removeCart(${p.id})">
+Remove
+</button>
+
+</div>
+
+</div>
+
+<b>
+₹${money(sub)}
+</b>
+
+</div>
+
+`;
+
+});
+
+area.innerHTML=
+
+html+
+
+"<h3>Total Order Value: ₹"+
+money(total)+
+"</h3>"+
+
+'<button class="primary" onclick="checkout()">'+
+"Proceed to Checkout"+
+"</button>";
+
+}
+
+function changeQty(id,d){
+
+let item=
+cart.find(x=>x.id===id);
+
+let p=
+products.find(x=>x.id===id);
+
+if(!item||!p)return;
+
+if(
+d>0 &&
+item.qty>=p.stock
+){
+
+alert(
+"Available stock is "+p.stock
+);
+
+return;
+
+}
+
+item.qty+=d;
+
+if(item.qty<=0){
+
+cart=
+cart.filter(x=>x.id!==id);
+
+}
+
+save();
+
+renderCart();
+
+}
+
+function removeCart(id){
+
+cart=
+cart.filter(x=>x.id!==id);
+
+save();
+
+renderCart();
+
+}
+
+function customerLoginStart(){
+
+if(customer){
+
+closeLogin();
+
+openAccount();
+
+}else{
+
+closeLogin();
+
+openCustomerSetup();
+
+}
+
+}
+
+function adminLoginStart(){
+
+closeLogin();
+
+openAdmin();
+
+}
+
+function closeLogin(){
+
+document
+.getElementById("loginScreen")
+.classList.add("hidden");
+
+}
+
+function openCustomerSetup(){
+
+document
+.getElementById("customerModal")
+.style.display="block";
+
+document
+.getElementById("customerArea")
+.innerHTML=`
+
+<p class="notice">
+
+Please enter your details.
+GPS location is required for delivery.
+
+</p>
+
+<input
+id="cName"
+placeholder="Customer Name">
+
+<input
+id="cShop"
+placeholder="Shop Name">
+
+<input
+id="cMobile"
+maxlength="10"
+inputmode="numeric"
+placeholder="Mobile Number">
+
+<textarea
+id="cAddress"
+placeholder="Full Address">
+</textarea>
+
+<button
+class="primary"
+onclick="getGPSAndSave()">
+
+📍 Get GPS Location & Save
+
+</button>
+
+<div id="gpsMsg"
+class="small">
+</div>
+
+`;
+
+if(customer){
+
+cName.value=customer.name;
+
+cShop.value=customer.shop;
+
+cMobile.value=customer.mobile;
+
+cAddress.value=customer.address;
+
+}
+
+}
+
+function getGPSAndSave(){
+
+let name=
+document.getElementById("cName")
+.value.trim();
+
+let shop=
+document.getElementById("cShop")
+.value.trim();
+
+let mobile=
+document.getElementById("cMobile")
+.value.trim();
+
+let address=
+document.getElementById("cAddress")
+.value.trim();
+
+if(
+!name||
+!shop||
+!/^[6-9]\d{9}$/.test(mobile)||
+!address
+){
+
+alert(
+"Please fill all details correctly."
+);
+
+return;
+
+}
+
+if(!navigator.geolocation){
+
+alert(
+"GPS is not supported by this browser."
+);
+
+return;
+
+}
+
+document.getElementById("gpsMsg")
+.textContent=
+"Getting GPS location...";
+
+navigator.geolocation.getCurrentPosition(
+
+pos=>{
+
+customer={
+
+name:name,
+
+shop:shop,
+
+mobile:mobile,
+
+address:address,
+
+lat:pos.coords.latitude,
+
+lng:pos.coords.longitude,
+
+updatedAt:new Date().toISOString()
+
+};
+
+save();
+
+closeModal("customerModal");
+
+closeLogin();
+
+openAccount();
+
+alert(
+"Customer profile saved successfully."
+);
+
+},
+
+()=>{
+
+document.getElementById("gpsMsg")
+.innerHTML=
+'<span style="color:red">'+
+"Location permission denied. "+
+"Please allow location access."+
+"</span>";
+
+},
+
+{
+enableHighAccuracy:true,
+timeout:15000,
+maximumAge:0
+}
+
+);
+
+}
+
+function openAccount(){
+
+document.getElementById("accountModal")
+.style.display="block";
+
+if(!customer){
+
+document.getElementById("accountArea")
+.innerHTML=
+
+"<p>No customer profile.</p>"+
+
+'<button class="primary" onclick="closeModal(\'accountModal\');openCustomerSetup()">'+
+"Create Profile"+
+"</button>";
+
+return;
+
+}
+
+document.getElementById("accountArea")
+.innerHTML=
+
+"<p><b>Name:</b> "+
+escapeHtml(customer.name)+
+"</p>"+
+
+"<p><b>Shop:</b> "+
+escapeHtml(customer.shop)+
+"</p>"+
+
+"<p><b>Mobile:</b> "+
+customer.mobile+
+"</p>"+
+
+"<p><b>Address:</b> "+
+escapeHtml(customer.address)+
+"</p>"+
+
+"<p><b>GPS:</b> "+
+(customer.lat?"Saved":"Not Saved")+
+"</p>"+
+
+(customer.lat?
+
+'<a class="maplink" target="_blank" href="https://www.google.com/maps?q='+
+customer.lat+
+','+
+customer.lng+
+'">📍 View on Map</a>'
+
+:"")+
+
+'<button class="primary" onclick="editCustomer()">Edit Profile</button>'+
+
+'<button class="primary secondary" onclick="openMyOrders()">📦 My Orders</button>'+
+
+'<button class="primary danger" onclick="logoutCustomer()">Logout</button>';
+
+}
+
+function editCustomer(){
+
+closeModal("accountModal");
+
+openCustomerSetup();
+
+}
+
+function logoutCustomer(){
+
+customer=null;
+
+localStorage.removeItem(
+"customerProfile"
+);
+
+closeModal("accountModal");
+
+document.getElementById("loginScreen")
+.classList.remove("hidden");
+
+}
+
+function checkout(){
+
+if(!customer){
+
+closeModal("cartModal");
+
+openCustomerSetup();
+
+return;
+
+}
+
+if(!cart.length)return;
+
+let items=[];
+
+for(let x of cart){
+
+let p=
+products.find(y=>y.id===x.id);
+
+if(!p)continue;
+
+if(x.qty>p.stock){
+
+alert(
+"Insufficient stock for "+
+p.name
+);
+
+return;
+
+}
+
+items.push({
+
+id:p.id,
+
+name:p.name,
+
+qty:x.qty,
+
+mrp:p.mrp,
+
+deal:p.deal,
+
+subtotal:p.deal*x.qty
+
+});
+
+}
+
+let total=
+items.reduce(
+(a,x)=>a+x.subtotal,
+0
+);
+
+let id=
+
+"GE-"+
+
+new Date()
+.toISOString()
+.slice(0,10)
+.replace(/-/g,"")+
+
+"-"+
+
+String(
+orders.length+1
+)
+.padStart(4,"0");
+
+let order={
+
+id:id,
+
+customer:{...customer},
+
+items:items,
+
+total:total,
+
+status:"Pending",
+
+date:new Date()
+.toLocaleString("en-IN")
+
+};
+
+orders.unshift(order);
+
+items.forEach(x=>{
+
+let p=
+products.find(
+p=>p.id===x.id
+);
+
+p.stock-=x.qty;
+
+});
+
+cart=[];
+
+save();
+
+closeModal("cartModal");
+
+alert(
+"Order placed successfully!\nOrder ID: "+
+id
+);
+
+openMyOrders();
+
+}
+
+function openMyOrders(){
+
+closeModal("accountModal");
+
+document.getElementById("ordersModal")
+.style.display="block";
+
+let mine=
+orders.filter(
+o=>customer&&
+o.customer.mobile===customer.mobile
+);
+
+if(!mine.length){
+
+document.getElementById("myOrdersArea")
+.innerHTML=
+'<div class="empty">No orders yet.</div>';
+
+return;
+
+}
+
+document.getElementById("myOrdersArea")
+.innerHTML=
+
+mine.map(o=>`
+
+<div class="adminitem">
+
+<div class="row">
+
+<b>${o.id}</b>
+
+<span class="status">
+${o.status}
+</span>
+
+</div>
+
+<div class="small">
+${o.date}
+</div>
+
+<p>
+Total:
+<b>₹${money(o.total)}</b>
+</p>
+
+${o.items.map(i=>
+escapeHtml(i.name)+
+" × "+
+i.qty
+).join("<br>")}
+
+</div>
+
+`).join("");
+
+}
+
+function openAdmin(){
+
+document.getElementById("adminModal")
+.style.display="block";
+
+if(
+localStorage.getItem("adminLogged")
+==="yes"
+){
+
+showAdmin();
+
+}else{
+
+showAdminLogin();
+
+}
+
+}
+
+function showAdminLogin(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<h2>Admin Login</h2>
+
+<input
+id="adminUser"
+placeholder="User ID">
+
+<input
+id="adminPass"
+type="password"
+placeholder="Password">
+
+<button
+class="primary"
+onclick="adminLogin()">
+
+Login
+
+</button>
+
+<p class="small">
+
+First login:
+admin / 123456
+
+</p>
+
+`;
+
+}
+
+function adminLogin(){
+
+let u=
+localStorage.getItem("adminUser")
+||"admin";
+
+let p=
+localStorage.getItem("adminPass")
+||"123456";
+
+if(
+document.getElementById("adminUser").value===u&&
+document.getElementById("adminPass").value===p
+){
+
+localStorage.setItem(
+"adminLogged",
+"yes"
+);
+
+showAdmin();
+
+}else{
+
+alert(
+"Wrong User ID or Password"
+);
+
+}
+
+}
+
+function showAdmin(){
+
+let pending=
+orders.filter(
+o=>o.status==="Pending"
+).length;
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<h2>Admin Dashboard</h2>
+
+<div class="statgrid">
+
+<div class="stat">
+Orders
+<br>
+<b>${orders.length}</b>
+</div>
+
+<div class="stat">
+Pending
+<br>
+<b>${pending}</b>
+</div>
+
+<div class="stat">
+Products
+<br>
+<b>${products.length}</b>
+</div>
+
+<div class="stat">
+Low Stock
+<br>
+<b>${products.filter(p=>p.stock<=5).length}</b>
+</div>
+
+</div>
+
+<div class="adminnav">
+
+<button onclick="adminProducts()">
+🛍️ Products
+</button>
+
+<button onclick="manageCategories()">
+🏷️ Categories
+</button>
+
+<button onclick="showOrders()">
+📦 Orders
+<span class="badge">${pending}</span>
+</button>
+
+<button onclick="stockManager()">
+📊 Stock
+</button>
+
+<button onclick="bannerManager()">
+🖼️ Banner
+</button>
+
+<button onclick="themeManager()">
+🎨 Theme
+</button>
+
+<button onclick="changeAdmin()">
+🔐 Credentials
+</button>
+
+<button onclick="adminLogout()">
+Logout
+</button>
+
+</div>
+
+<hr>
+
+<h3>Recent Orders</h3>
+
+${orders.slice(0,5).map(o=>`
+
+<div class="adminitem">
+
+<div class="row">
+
+<b>${o.id}</b>
+
+<span class="status">
+${o.status}
+</span>
+
+</div>
+
+${escapeHtml(o.customer.name)}
+<br>
+
+<span class="small">
+${escapeHtml(o.customer.shop)}
+•
+₹${money(o.total)}
+</span>
+
+</div>
+
+`).join("")}
+
+`;
+
+}
+
+function adminProducts(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="showAdmin()">
+← Dashboard
+</button>
+
+<h2>Products</h2>
+
+<button
+class="primary"
+onclick="productForm()">
+
+➕ Add Product
+
+</button>
+
+`+
+
+products.map(p=>`
+
+<div class="adminitem">
+
+<div class="row">
+
+<img
+class="thumb"
+src="${p.img}">
+
+<div style="flex:1">
+
+<b>${escapeHtml(p.name)}</b>
+
+<br>
+
+<span class="small">
+
+${escapeHtml(p.cat)}
+•
+MRP ₹${money(p.mrp)}
+•
+Deal ₹${money(p.deal)}
+•
+Stock ${p.stock}
+
+</span>
+
+</div>
+
+</div>
+
+<button
+onclick="productForm(${p.id})">
+
+Edit
+
+</button>
+
+<button
+class="danger"
+onclick="deleteProduct(${p.id})">
+
+Delete
+
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+function productForm(id){
+
+let p=
+id
+?
+products.find(x=>x.id===id)
+:
+null;
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="adminProducts()">
+← Products
+</button>
+
+<h2>
+${p?"Edit":"Add"} Product
+</h2>
+
+<input
+id="pName"
+placeholder="Product Name"
+value="${p?escapeHtml(p.name):""}">
+
+<select id="pCat">
+
+${categories
+.filter(c=>c!=="All")
+.map(c=>
+'<option '+
+(p&&p.cat===c?"selected":"")+
+'>'+
+escapeHtml(c)+
+'</option>'
+).join("")}
+
+</select>
+
+<input
+id="pMrp"
+type="number"
+placeholder="MRP Price"
+value="${p?p.mrp:""}">
+
+<input
+id="pDeal"
+type="number"
+placeholder="Deal Price"
+value="${p?p.deal:""}">
+
+<input
+id="pStock"
+type="number"
+placeholder="Stock"
+value="${p?p.stock:20}">
+
+<p class="small">
+Product Image — Select from phone gallery
+</p>
+
+<input
+id="pImage"
+type="file"
+accept="image/*">
+
+${p?
+
+'<img class="thumb" src="'+
+p.img+
+'">'
+
+:""}
+
+<button
+class="primary"
+onclick="saveProduct(${id||0})">
+
+Save Product
+
+</button>
+
+`;
+
+}
+
+function saveProduct(id){
+
+let name=
+document.getElementById("pName")
+.value.trim();
+
+let cat=
+document.getElementById("pCat")
+.value;
+
+let mrp=
+Number(document.getElementById("pMrp").value);
+
+let deal=
+Number(document.getElementById("pDeal").value);
+
+let stock=
+Number(document.getElementById("pStock").value);
+
+if(
+!name||
+!cat||
+mrp<0||
+deal<0||
+stock<0
+){
+
+alert(
+"Please fill all details."
+);
+
+return;
+
+}
+
+let file=
+document.getElementById("pImage")
+.files[0];
+
+function finish(img){
+
+if(id){
+
+let p=
+products.find(
+x=>x.id===id
+);
+
+p.name=name;
+p.cat=cat;
+p.mrp=mrp;
+p.deal=deal;
+p.stock=stock;
+
+if(img)p.img=img;
+
+}else{
+
+products.push({
+
+id:Date.now(),
+
+name:name,
+
+cat:cat,
+
+mrp:mrp,
+
+deal:deal,
+
+stock:stock,
+
+img:img||placeholder
+
+});
+
+}
+
+save();
+
+adminProducts();
+
+alert(
+"Product saved successfully."
+);
+
+}
+
+if(file){
+
+let reader=
+new FileReader();
+
+reader.onload=
+function(){
+
+finish(
+reader.result
+);
+
+};
+
+reader.readAsDataURL(file);
+
+}else{
+
+finish("");
+
+}
+
+}
+
+function deleteProduct(id){
+
+if(
+confirm(
+"Delete this product?"
+)
+){
+
+products=
+products.filter(
+p=>p.id!==id
+);
+
+cart=
+cart.filter(
+x=>x.id!==id
+);
+
+save();
+
+adminProducts();
+
+}
+
+}
+
+function manageCategories(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="showAdmin()">
+← Dashboard
+</button>
+
+<h2>Categories</h2>
+
+<input
+id="newCategory"
+placeholder="New Category">
+
+<button
+class="primary"
+onclick="addCategory()">
+
+Add Category
+
+</button>
+
+`+
+
+categories
+.filter(c=>c!=="All")
+.map(c=>`
+
+<div class="adminitem row">
+
+<b>${escapeHtml(c)}</b>
+
+<button
+class="danger"
+onclick="deleteCategory('${escapeHtml(c)}')">
+
+Delete
+
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+function addCategory(){
+
+let c=
+document.getElementById("newCategory")
+.value.trim();
+
+if(!c)return;
+
+if(
+categories.includes(c)
+){
+
+alert(
+"Category already exists."
+);
+
+return;
+
+}
+
+categories.push(c);
+
+save();
+
+manageCategories();
+
+}
+
+function deleteCategory(c){
+
+if(
+products.some(
+p=>p.cat===c
+)
+){
+
+alert(
+"Products are using this category. Change product category first."
+);
+
+return;
+
+}
+
+categories=
+categories.filter(
+x=>x!==c
+);
+
+save();
+
+manageCategories();
+
+}
+
+function stockManager(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="showAdmin()">
+← Dashboard
+</button>
+
+<h2>Stock Management</h2>
+
+`+
+
+products.map(p=>`
+
+<div class="adminitem">
+
+<b>
+${escapeHtml(p.name)}
+</b>
+
+<p>
+Current Stock:
+<b>${p.stock}</b>
+</p>
+
+<input
+id="stock_${p.id}"
+type="number"
+min="0"
+value="${p.stock}">
+
+<button
+class="primary"
+onclick="updateStock(${p.id})">
+
+Update Stock
+
+</button>
+
+</div>
+
+`).join("")+
+
+`
+
+<p class="notice">
+
+Excel live synchronization requires a backend/API.
+This version provides manual stock management.
+
+</p>
+
+`;
+
+}
+
+function updateStock(id){
+
+let value=
+Number(
+document.getElementById(
+"stock_"+id
+).value
+);
+
+if(value<0)return;
+
+let p=
+products.find(
+x=>x.id===id
+);
+
+p.stock=value;
+
+save();
+
+stockManager();
+
+}
+
+function bannerManager(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="showAdmin()">
+← Dashboard
+</button>
+
+<h2>Banner Management</h2>
+
+${banner?
+
+'<img src="'+banner+'" style="width:100%;border-radius:10px">'
+
+:
+
+"<p>No banner added.</p>"
+}
+
+<input
+id="bannerFile"
+type="file"
+accept="image/*">
+
+<button
+class="primary"
+onclick="saveBanner()">
+
+Upload / Replace Banner
+
+</button>
+
+<button
+class="primary danger"
+onclick="removeBanner()">
+
+Remove Banner
+
+</button>
+
+`;
+
+}
+
+function saveBanner(){
+
+let file=
+document.getElementById("bannerFile")
+.files[0];
+
+if(!file){
+
+alert(
+"Choose banner image."
+);
+
+return;
+
+}
+
+let reader=
+new FileReader();
+
+reader.onload=function(){
+
+banner=
+reader.result;
+
+localStorage.setItem(
+"bannerImage",
+banner
+);
+
+renderBanner();
+
+bannerManager();
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+function removeBanner(){
+
+banner="";
+
+localStorage.removeItem(
+"bannerImage"
+);
+
+renderBanner();
+
+bannerManager();
+
+}
+
+function themeManager(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="showAdmin()">
+← Dashboard
+</button>
+
+<h2>Theme Settings</h2>
+
+<label>Primary Colour</label>
+
+<input
+id="primaryColor"
+type="color"
+value="${theme.primary}">
+
+<label>Secondary Colour</label>
+
+<input
+id="secondaryColor"
+type="color"
+value="${theme.secondary}">
+
+<button
+class="primary"
+onclick="saveTheme()">
+
+Save Theme
+
+</button>
+
+`;
+
+}
+
+function saveTheme(){
+
+theme={
+
+primary:
+document.getElementById("primaryColor").value,
+
+secondary:
+document.getElementById("secondaryColor").value
+
+};
+
+localStorage.setItem(
+"theme",
+JSON.stringify(theme)
+);
+
+applyTheme();
+
+themeManager();
+
+alert(
+"Theme updated."
+);
+
+}
+
+function showOrders(){
+
+document.getElementById("adminArea")
+.innerHTML=
+
+`
+
+<button onclick="showAdmin()">
+← Dashboard
+</button>
+
+<h2>Orders</h2>
+
+`+
+
+(
+
+orders.length
+
+?
+
+orders.map(o=>`
+
+<div class="adminitem">
+
+<div class="row">
+
+<b>${o.id}</b>
+
+<select
+onchange="changeStatus('${o.id}',this.value)">
+
+${[
+"Pending",
+"Confirmed",
+"Out for Delivery",
+"Delivered",
+"Cancelled"
+].map(s=>
+
+'<option '+
+(o.status===s?"selected":"")+
+'>'+
+s+
+'</option>'
+
+).join("")}
+
+</select>
+
+</div>
+
+<p>
+
+<b>
+${escapeHtml(o.customer.name)}
+</b>
+
+<br>
+
+Shop:
+${escapeHtml(o.customer.shop)}
+
+<br>
+
+Mobile:
+${o.customer.mobile}
+
+<br>
+
+Address:
+${escapeHtml(o.customer.address)}
+
+</p>
+
+<p>
+
+Total:
+<b>
+₹${money(o.total)}
+</b>
+
+</p>
+
+${o.items.map(i=>
+
+escapeHtml(i.name)+
+" × "+
+i.qty+
+" — ₹"+
+money(i.subtotal)
+
+).join("<br>")}
+
+<br>
+
+${
+o.customer.lat
+
+?
+
+'<a class="maplink" target="_blank" href="https://www.google.com/maps?q='+
+o.customer.lat+
+','+
+o.customer.lng+
+'">📍 View Customer GPS Location</a>'
+
+:
+
+"<span class='small'>GPS not available</span>"
+}
+
+</div>
+
+`).join("")
+
+:
+
+'<div class="empty">No orders yet.</div>'
+
+);
+
+}
+
+function changeStatus(id,status){
+
+let order=
+orders.find(
+o=>o.id===id
+);
+
+if(!order)return;
+
+order.status=status;
+
+save();
+
+if(status==="Confirmed"){
+
+sendWhatsApp(order);
+
+}
+
+showOrders();
+
+}
+
+function sendWhatsApp(order){
+
+let message=
+
+"Order "+order.id+
+" confirmed.%0A"+
+"Customer: "+
+encodeURIComponent(order.customer.name)+
+"%0A"+
+"Total: ₹"+
+order.total+
+"%0A"+
+"Status: Confirmed%0A"+
+"Thank you - Gayatri Enterprises / Dodla Ice Creams";
+
+if(
+confirm(
+"Order confirmed. Open WhatsApp confirmation?"
+)
+){
+
+window.open(
+"https://wa.me/91"+
+order.customer.mobile+
+"?text="+
+message,
+"_blank"
+);
+
+}
+
+}
+
+function changeAdmin(){
+
+let user=
+prompt(
+"New Admin User ID",
+localStorage.getItem("adminUser")||"admin"
+);
+
+if(!user)return;
+
+let pass=
+prompt(
+"New Admin Password"
+);
+
+if(!pass)return;
+
+localStorage.setItem(
+"adminUser",
+user
+);
+
+localStorage.setItem(
+"adminPass",
+pass
+);
+
+alert(
+"Admin credentials changed."
+);
+
+showAdmin();
+
+}
+
+function adminLogout(){
+
+localStorage.removeItem(
+"adminLogged"
+);
+
+showAdminLogin();
+
+}
+
+function closeModal(id){
+
+document.getElementById(id)
+.style.display="none";
+
+}
+
+renderCategories();
+
+renderProducts();
+
+updateCart();
+
+renderBanner();
+
+</script>
+
+</body>
+</html>
